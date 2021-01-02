@@ -213,7 +213,7 @@ input:checked + label {
     <div class="form-radio">
         <div class="radio-item-list">
             <span class="radio-item">
-                <input name="weight" placeholder="Add weight..." type="number" name="weight" id="weight" required>
+                <input name="weight" placeholder="Add weight..." type="number" id="weight" required>
             </span>
         </div>
     </div>
@@ -316,7 +316,7 @@ function validateForm() {
             valid = true;
         }
       }
-      else if(y[i].required && y[i].value){
+      else if(y[i].required && !y[i].value){
           valid = false;
       }
   }
