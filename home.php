@@ -24,6 +24,7 @@ if (!isset($_SESSION['loggedin'])) {
 		<title>Home Page</title>
 		<link href="styles/main.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body class="loggedin">
 		<nav class="navtop">
@@ -34,9 +35,31 @@ if (!isset($_SESSION['loggedin'])) {
                 <a href="daily_questionnaire.html"><i class="fas fa-question"></i>Quest</a>
 			</div>
 		</nav>
-		<div class="content">
-			<h2>Home Page</h2>
-			<p>Welcome back, <?=$_SESSION['name']?>!</p>
+
+		<div class="container">
+			<div class="calendar">
+				<div class="month">
+				<i class="fas fa-angle-left prev"></i>
+				<div class="date">
+					<h1></h1>
+					<p></p>
+				</div>
+				<i class="fas fa-angle-right next"></i>
+				</div>
+				<div class="weekdays">
+				<div>Sun</div>
+				<div>Mon</div>
+				<div>Tue</div>
+				<div>Wed</div>
+				<div>Thu</div>
+				<div>Fri</div>
+				<div>Sat</div>
+				</div>
+				<div class="days"></div>
+			</div>
 		</div>
+
+    <script src="calendar.js"></script>
+  </body>
 	</body>
 </html>

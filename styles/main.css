@@ -177,3 +177,137 @@ body.loggedin {
   background-color: #2868c7;
     transition: background-color 0.2s;
 }
+
+.circle{
+    border-radius: 50%;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    left: 1332px;
+    top: -23px;
+
+    background: #377AAF;
+}
+
+
+
+
+/* #######CALENDAR######### */
+
+.container {
+    padding-left: 50px ;
+    padding-right: 50px;
+    width: 50%;
+    height: 100vh;
+    color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .calendar {
+    width: auto;
+    height: auto;
+    background-color: #222227;
+    box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
+  }
+  
+  .month {
+    width: 100%;
+    height: 7rem;
+    background-color: #167e56;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    text-align: center;
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+  }
+  
+  .month i {
+    font-size: 1.75rem;
+    cursor: pointer;
+  }
+  
+  .month h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .month p {
+    font-size: 1.0rem;
+  }
+  
+  .weekdays {
+    width: 100%;
+    height: 4rem;
+    padding: 0 0.4rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .weekdays div {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    width: calc(34.2rem / 7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+  }
+  
+  .days {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.2rem;
+  }
+  
+  .days div {
+    font-size: 0.9rem;
+    margin: 0.3rem;
+    width: calc(30.2rem / 7);
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+    transition: background-color 0.2s;
+  }
+  
+  .days div:hover:not(.today) {
+    background-color: #262626;
+    border: 0.2rem solid #777;
+    cursor: pointer;
+  }
+  
+  .prev-date,
+  .next-date {
+    opacity: 0.5;
+  }
+  
+  .today {
+    background-color: #167e56;
+  }
+
+ a.fill-calendarday{
+     text-align: center;
+     height: 100%;
+     width: 100%;
+     text-decoration: none;
+     font-size: 0.9rem;
+     font-size: 0.9rem;
+     margin: 0.3rem;
+     width: calc(30.2rem / 7);
+     height: 3rem;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+     transition: background-color 0.2s;
+     color: white;
+ }
