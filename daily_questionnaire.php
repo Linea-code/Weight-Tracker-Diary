@@ -40,7 +40,7 @@ if (array_key_exists('sports_kind', $_POST)){
     }
 else{$sports_kind = NULL;}
 $weight = $_POST['weight'];
-if (array_key_exists('sports_kind', $_POST)){
+if (array_key_exists('individual_entry', $_POST)){
     $individual_entry = $_POST['individual_entry'];}
 else{$individual_entry = NULL;}
 
