@@ -6,12 +6,12 @@
 3. Navigate to the XAMPPs installation folder (C:\xampp) and open the folder: htdocs
 4. Clone this Github repository into the htdocs folder
 5. For creating and using the Database do the following:
-  1. Install [phpMyAdmin](https://www.phpmyadmin.net/) -> during the installation choose as Host "localhost" and as User "root"
-  2. Navigate to: [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/)
-  3. Click the "Database" tab at the top
-  4. Under "Create database" type in "phplogin" in the text box and select "utf8_general_ci" as the collation
-  5. Click create
-  6. Now perform the following SQL comands unter the tab "SQL":
+..1. Install [phpMyAdmin](https://www.phpmyadmin.net/) -> during the installation choose as Host "localhost" and as User "root"
+..2. Navigate to: [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/)
+..3. Click the "Database" tab at the top
+..4. Under "Create database" type in "phplogin" in the text box and select "utf8_general_ci" as the collation
+..5. Click create
+..6. Now perform the following SQL comands unter the tab "SQL":
   
        ```SQL
        CREATE TABLE `accounts` (
