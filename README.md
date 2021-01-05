@@ -12,7 +12,6 @@
   5.4. Under "Create database" type in "phplogin" in the text box and select "utf8_general_ci" as the collation
   5.5. Click create
   5.6. Now perform the following SQL comands unter the tab "SQL":
-       1. 
        ```	
        CREATE TABLE `accounts` (
        `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -21,8 +20,7 @@
        `email` varchar(100) NOT NULL,
        PRIMARY KEY (`id`)
        ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8
-       ```
-       2. 
+       ``` 
        ```
        CREATE TABLE `diary_entries` (
        `user_id` int(11) NOT NULL,
@@ -43,8 +41,7 @@
        CONSTRAINT `diary_entries_ibfk_3` FOREIGN KEY (`sleep`) REFERENCES `rating` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
        CONSTRAINT `diary_entries_ibfk_4` FOREIGN KEY (`sports_kind`) REFERENCES `sports` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
-      ```
-      3. 
+      ``` 
       ```
       CREATE TABLE `rating` (
        `id` int(11) NOT NULL,
@@ -52,7 +49,6 @@
        PRIMARY KEY (`id`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
       ```
-      4. 
       ```    	
       CREATE TABLE `sports` (
        `id` int(11) NOT NULL,
