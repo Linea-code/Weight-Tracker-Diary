@@ -9,7 +9,7 @@
     * Install [phpMyAdmin](https://www.phpmyadmin.net/) -> during the installation choose as Host "localhost" and as User "root"
     * Navigate to: [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/)
     * Click the "Database" tab at the top
-    * Under "Create database" type in "phplogin" in the text box and select "utf8_general_ci" as the collation
+    * Under "Create database" type in "weight-tracker-diary" in the text box and select "utf8_general_ci" as the collation
     * Click create
     * Now perform the following SQL comands unter the tab "SQL":
 
