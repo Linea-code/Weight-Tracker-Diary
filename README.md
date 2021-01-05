@@ -3,7 +3,7 @@
 ## Setup:
 1. Install [XAMPP](https://www.apachefriends.org/de/index.html)
 2. Open the XAMPP Control Panel and start Apache and MySQL (click "Start" next to it)
-3. Navigate to the XAMPPs installation folder (C:\xampp) and open the folder: htdocs
+3. Navigate to the XAMPPs installation folder (for Windows "C:\xampp") and open the folder: htdocs
 4. Clone this Github repository into the htdocs folder
 5. For creating and using the Database do the following:
     * Install [phpMyAdmin](https://www.phpmyadmin.net/) -> during the installation choose as Host "localhost" and as User "root"
