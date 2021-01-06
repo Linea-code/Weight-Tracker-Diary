@@ -8,9 +8,41 @@
 body {
     background-color: #435165;
 }
+
+.footer {
+  color: gray;
+  font-size: 12px;
+  background-color: paleturquoise;
+  display: ;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  text-align: left;
+  left: 0;
+}
+
+.About{
+  text-decoration: none;
+  color: gray;
+  font-size: 12px;
+  background-color: paleturquoise;
+  display: ;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  text-align: right;
+  left: 0;
+}
+
+.header-about{
+color: #fff;
+text-align: center;
+}
+
+
 .login {
     width: 400px;
-    background-color: #000000;
+    background-color: #167e56;
     box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
     margin: 100px auto;
 }
