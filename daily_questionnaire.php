@@ -24,9 +24,9 @@ if (mysqli_connect_errno()) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 
-$stmt = $con->prepare("INSERT INTO diary_entries (user_id, date, feeling, sleep, sleep_time, sports, sports_kind, weight, individual_entry)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("isssissis", $user_id, $date, $feeling, $sleep, $sleep_time, $sports, $sports_kind, $weight, $individual_entry);
+$stmt = $con->prepare("INSERT INTO diary_entries (user_id, date, feeling, sleep, sleep_time, sports, sports_kind, weight, individual_entry, score)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("isssissdsd", $user_id, $date, $feeling, $sleep, $sleep_time, $sports, $sports_kind, $weight, $individual_entry, $score);
 
 $user_id = $_SESSION['id'];
 $date = date("Y-m-d");
@@ -44,7 +44,25 @@ if (array_key_exists('individual_entry', $_POST)){
     $individual_entry = $_POST['individual_entry'];}
 else{$individual_entry = NULL;}
 
+if ($_POST['sleep_time'] <= 3 || $_POST['sleep_time'] >= 13){
+	$sleep_time_score = 0;
+}
+elseif ($_POST['sleep_time'] == 4 || $_POST['sleep_time'] == 12) {
+	$sleep_time_score = 1;
+}
+elseif ($_POST['sleep_time'] == 5 || $_POST['sleep_time'] == 11) {
+	$sleep_time_score = 2;
+}
+elseif ($_POST['sleep_time'] == 6 || $_POST['sleep_time'] == 10) {
+	$sleep_time_score = 3;
+}
+else{$sleep_time_score = 4;}
+
+$score = $_POST['feeling'] + ($_POST['sports'] * 2) + (($_POST['sleep'] + $sleep_time_score)/2);
 $stmt->execute();
+
+
+
 ?>
 
 <!DOCTYPE html>
