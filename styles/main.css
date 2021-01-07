@@ -163,6 +163,7 @@ body.loggedin {
     box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
     margin: 100px auto;
     border-radius: 25px 25px;
+    padding: 10px;
 }
 .register h1 {
     text-align: center;
@@ -203,7 +204,7 @@ body.loggedin {
     padding: 15px;
     margin-top: 20px;
     background-color: #3274d6;
-   border: 0;
+    border: 0;
     cursor: pointer;
     font-weight: bold;
     color: #ffffff;
