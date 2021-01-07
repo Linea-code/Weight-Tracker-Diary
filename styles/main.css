@@ -6,14 +6,13 @@
     -moz-osx-font-smoothing: grayscale;
 }
 body {
-    background-color: #435165;
+    background-color: #ffffff;
 }
 
 .footer {
   color: gray;
   font-size: 12px;
-  background-color: paleturquoise;
-  display: ;
+  background-color: #DFF4F3;
   position: absolute;
   width: 100%;
   bottom: 0;
@@ -25,8 +24,7 @@ body {
   text-decoration: none;
   color: gray;
   font-size: 12px;
-  background-color: paleturquoise;
-  display: ;
+  background-color: #DFF4F3;
   position: absolute;
   width: 100%;
   bottom: 0;
@@ -42,7 +40,7 @@ text-align: center;
 
 .login {
     width: 400px;
-    background-color: #167e56;
+    background-color: #DFF4F3;
     box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
     margin: 100px auto;
 }
@@ -161,16 +159,18 @@ body.loggedin {
 
 .register {
     width: 400px;
-    background-color: #ffffff;
+    background-color: #DFF4F3;
     box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
     margin: 100px auto;
+    border-radius: 25px 25px;
 }
 .register h1 {
     text-align: center;
     color: #5b6574;
     font-size: 24px;
     padding: 20px 0 20px 0;
-    border-bottom: 1px solid #dee0e4;
+    border-bottom: 1px solid #3BBBB3;
+
 }
 .register form {
     display: flex;
@@ -178,14 +178,16 @@ body.loggedin {
     justify-content: center;
     padding-top: 20px;
 }
+
 .register form label {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50px;
-   height: 50px;
+    height: 50px;
     background-color: #3274d6;
     color: #ffffff;
+    border-radius: 25px;
 }
 .register form input[type="password"], .register form input[type="text"], .register form input[type="email"] {
     width: 310px;
@@ -195,7 +197,7 @@ body.loggedin {
     padding: 0 15px;
 }
 .register form input[type="submit"] {
-    width: 100%;
+    width: 75%;
     padding: 15px;
     margin-top: 20px;
     background-color: #3274d6;
@@ -204,6 +206,7 @@ body.loggedin {
     font-weight: bold;
     color: #ffffff;
     transition: background-color 0.2s;
+    border-radius: 25px;
 }
 .register form input[type="submit"]:hover {
   background-color: #2868c7;
