@@ -348,10 +348,18 @@ body.loggedin {
 
  /* ########chart####### */
 
-.chart{
+.line_chart{
     float:right;
     width: 50%;
     height: 100vh;
     padding-top: 5rem;
     padding-bottom: 5rem;
+}
+
+.donut_chart{
+  float:left;
+  width: 40%;
+  height: 100vh;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }

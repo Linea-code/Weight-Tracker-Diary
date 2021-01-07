@@ -36,6 +36,46 @@ while($row = mysqli_fetch_array($result))
 }
 $chart_data = substr ($chart_data, 0, -2);
 
+
+$stmt = $con->prepare ("SELECT score FROM diary_entries WHERE user_id = ?");
+$stmt->bind_param("i", $_SESSION['id']);
+$stmt->execute();
+$result2 = $stmt->get_result();
+$donut = '';
+
+$verygood = 0;
+$good = 0;
+$moderate = 0;
+$bad = 0;
+$noscore = 0;
+
+while($row = mysqli_fetch_array($result2))
+{
+	if($row['score'] >= 7.5){$verygood += 1;}
+	elseif($row['score'] >= 5){$good += 1;}
+	elseif($row['score'] >= 2.5){$moderate += 1;}
+	elseif($row['score'] > 0){$bad += 1;}
+	else{$noscore += 1;}
+}
+
+/* $donut_array= mysqli_fetch_array($result2);
+foreach($donut_array as $value):{
+	if($value >= 7.5){$verygood += 1;}
+	elseif($value >= 5){$good += 1;}
+	elseif($value >= 2.5){$moderate += 1;}
+	elseif($value > 0){$bad += 1;}
+	else{$noscore += 1;}
+}endforeach; */
+
+	
+$donut .="{ label:'Very Good', value:".$verygood."}, ";
+$donut .="{ label:'Good', value:".$good."}, ";
+$donut .="{ label:'Moderate', value:".$moderate."}, ";
+$donut .="{ label:'Bad', value:".$bad."}, ";
+$donut .="{ label:'No Rating Available', value:".$noscore."}, ";
+
+$donut = substr ($donut, 0, -2);
+
 ?>
 
 <!DOCTYPE html>
@@ -55,13 +95,14 @@ $chart_data = substr ($chart_data, 0, -2);
 		<nav class="navtop">
 			<div>
 				<h1>Statistics</h1>
-				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
-                <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
-                <a href="daily_questionnaire.html"><i class="fas fa-question"></i>Quest</a>
+				<a href="home.php"><i class="fas fa-user-circle"></i>Home</a>
+				<a href="daily_questionnaire.html"><i class="fas fa-question"></i>Quest</a>
+				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
 		</nav>
 		
-		<div id="chart" class= "chart"> </div>
+		<div id="chart" class= "line_chart"> </div>
+		<div id="donut" class= "donut_chart"> </div>
 
 	
 	<script> 
@@ -76,7 +117,15 @@ $chart_data = substr ($chart_data, 0, -2);
 			ykeys: ['score'],
 			labels: ['Score'],
 			hideHover:'auto',
-			lineColors:['#3BBBB3']
+			lineColors:['#3BBBB3'],
+			resize: false,
+		});
+
+		Morris.Donut({
+			element: 'donut',
+			data:[<?php echo $donut; ?>],
+			colors: ["darkgreen", "lightgreen", "orange", "red", "gray"],
+			resize: false,
 		});
 		
 	</script>

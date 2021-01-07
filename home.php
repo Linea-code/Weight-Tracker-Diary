@@ -58,9 +58,9 @@ $chart_data = substr ($chart_data, 0, -2);
 		<nav class="navtop">
 			<div>
 				<h1>Website Title</h1>
-				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
-                <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
-                <a href="daily_questionnaire.html"><i class="fas fa-question"></i>Quest</a>
+				<a href="statistics.php"><i class="fas fa-user-circle"></i>Statistics</a>
+				<a href="daily_questionnaire.html"><i class="fas fa-question"></i>Quest</a>
+				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
 		</nav>
 
@@ -86,8 +86,8 @@ $chart_data = substr ($chart_data, 0, -2);
 				<div class="days"></div>
 			</div>
 		</div>
+		<a href="statistics.php"></i><div id="chart" class= "line_chart"> </div></a>
 		
-		<div id="chart" class= "chart"> </div>
 
 	<script src="calendar.js"></script>
 	<script> 
