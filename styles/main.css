@@ -5,6 +5,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+.header{
+
+}
 body {
     background-color: #ffffff;
 }
@@ -13,8 +16,9 @@ body {
   color: gray;
   font-size: 12px;
   background-color: #DFF4F3;
-  position: absolute;
-  width: 100%;
+  display: block;
+  float:initial;
+  width: 49.9%;
   bottom: 0;
   text-align: left;
   left: 0;
@@ -25,11 +29,12 @@ body {
   color: gray;
   font-size: 12px;
   background-color: #DFF4F3;
-  position: absolute;
-  width: 100%;
+  width: 50.1%;  
+  display: block;
   bottom: 0;
   text-align: right;
-  left: 0;
+  right: 0;
+  float: initial;
 }
 
 .header-about{
