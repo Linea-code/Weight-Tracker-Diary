@@ -48,6 +48,8 @@ text-align: center;
     background-color: #DFF4F3;
     box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
     margin: 100px auto;
+    border-radius: 25px 25px;
+    padding: 10px;
 }
 .login h1 {
     text-align: center;
@@ -68,8 +70,10 @@ text-align: center;
     align-items: center;
     width: 50px;
     height: 50px;
-    background-color: #3274d6;
+    margin: 2px;
+    background-color: #377AAF;
     color: #ffffff;
+    border-radius: 25px;
 }
 .login form input[type="password"], .login form input[type="text"] {
     width: 310px;
@@ -77,17 +81,19 @@ text-align: center;
     border: 1px solid #dee0e4;
     margin-bottom: 20px;
     padding: 0 15px;
+    border-radius: 25px;
 }
 .login form input[type="submit"] {
     width: 100%;
     padding: 15px;
    margin-top: 20px;
-    background-color: #3274d6;
+    background-color: #377AAF;
     border: 0;
     cursor: pointer;
     font-weight: bold;
     color: #ffffff;
     transition: background-color 0.2s;
+    border-radius: 25px;
 }
 .login form input[type="submit"]:hover {
   background-color: #2868c7;
@@ -192,7 +198,7 @@ body.loggedin {
     width: 50px;
     height: 50px;
     margin: 2px;
-    background-color: #3274d6;
+    background-color: #377AAF;
     color: #ffffff;
     border-radius: 25px;
 }
@@ -208,7 +214,7 @@ body.loggedin {
     width: 75%;
     padding: 15px;
     margin-top: 20px;
-    background-color: #3274d6;
+    background-color:#377AAF;
     border: 0;
     cursor: pointer;
     font-weight: bold;
@@ -357,20 +363,100 @@ body.loggedin {
  }
 
 
- /* ########chart####### */
+ /* ########chart and Statistics####### */
+
+.overall_stat{
+  width:100%;
+  height: 100vh;
+}
+
+.overall_stat h1{
+  text-align: center;
+  color: #377AAF ;
+  font-size: 36px;
+}
+
 
 .line_chart{
     float:right;
     width: 50%;
-    height: 100vh;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    height: 80vh;
+    padding-top: 2rem;
 }
 
 .donut_chart{
   float:left;
   width: 40%;
+  height: 80vh;
+  padding-top: 2rem;  
+}
+.last_week_stat{
+  width:100%;
   height: 100vh;
+}
+
+.last_week_stat h1{
+  text-align: center;
+  color: #377AAF ;
+  font-size: 36px;
+
+}
+
+.donut_sleep{
+  float:left;
+  width: 25%;
+  height: 60vh;
   padding-top: 5rem;
   padding-bottom: 5rem;
+}
+.donut_sports{
+  float:left;
+  width: 25%;
+  height: 60vh;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+}
+
+/* ######################FIRST SCREEN LOGIN OR REGISTER############################## */
+.welcome{
+  align-items: center;
+  text-align: center;
+}
+.welcome h1{
+    text-align: center;
+    color: #3BBBB3;
+    font-size: 50px;
+    padding: 20px 0 20px 0;
+}
+
+.welcome p{
+    text-align: center;
+    color: #5b6574;
+    font-size: 24px;
+    padding: 20px 150px 50px 150px;
+}
+
+.welcome .login{
+  text-align: center;
+  background-color: #3BBBB3;
+  margin-right: 10px;
+}
+
+.welcome a{
+  text-decoration: none;
+  color:white;
+  font-weight: 600;
+  font-size: x-large;
+  padding: 10px 20px 10px 20px;  
+}
+
+.welcome a:hover{
+  background-color:#377AAF ;
+}
+
+.welcome .register{
+  text-align: center;
+  background-color: #3BBBB3;
+  margin-left: 10px;
 }

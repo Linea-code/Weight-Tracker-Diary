@@ -68,14 +68,43 @@ foreach($donut_array as $value):{
 }endforeach; */
 
 	
-$donut .="{ label:'Very Good', value:".$verygood."}, ";
-$donut .="{ label:'Good', value:".$good."}, ";
-$donut .="{ label:'Moderate', value:".$moderate."}, ";
-$donut .="{ label:'Bad', value:".$bad."}, ";
+$donut .="{ label:'Very Good Days', value:".$verygood."}, ";
+$donut .="{ label:'Good Days', value:".$good."}, ";
+$donut .="{ label:'Moderate Days', value:".$moderate."}, ";
+$donut .="{ label:'Bad Days', value:".$bad."}, ";
 $donut .="{ label:'No Rating Available', value:".$noscore."}, ";
 
 $donut = substr ($donut, 0, -2);
 
+$stmt = $con->prepare ("SELECT sleep_time, sports  FROM diary_entries WHERE date >= DATE(NOW()) - INTERVAL 6 DAY AND user_id = ?");
+$stmt->bind_param("i", $_SESSION['id']);
+$stmt->execute();
+$result3 = $stmt->get_result();
+$avg_sleep_data = '';
+$sports_data='';
+
+$avg_sleep_time = 0;
+$count_sleep_data = 0;
+$sport_amount = 0;
+
+while($row = mysqli_fetch_array($result3))
+{
+	$avg_sleep_time += $row['sleep_time'];
+	$count_sleep_data += 1;
+	$sport_amount += $row['sports'];
+}
+
+$avg_sleep_time = $avg_sleep_time/$count_sleep_data;
+
+$avg_sleep_data .="{ label:'Average Sleep Time', value:".$avg_sleep_time."}, ";
+
+$avg_sleep_data = substr ($avg_sleep_data, 0, -2);
+
+
+
+$sports_data .="{ label:'Sport Sessions', value:".$sport_amount."}, ";
+
+$sports_data = substr ($sports_data, 0, -2);
 ?>
 
 <!DOCTYPE html>
@@ -95,14 +124,24 @@ $donut = substr ($donut, 0, -2);
 		<nav class="navtop">
 			<div>
 				<h1>Statistics</h1>
-				<a href="home.php"><i class="fas fa-user-circle"></i>Home</a>
+				<a href="home.php"><i class="fas fa-home"></i>Home</a>
 				<a href="daily_questionnaire.html"><i class="fas fa-question"></i>Quest</a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
 		</nav>
 		
-		<div id="chart" class= "line_chart"> </div>
-		<div id="donut" class= "donut_chart"> </div>
+		<div class="overall_stat"> 
+			<h1>Your overall Statistic</h1>
+			<div id="chart" class= "line_chart"></div>
+			<div id="donut" class= "donut_chart"> </div>
+		</div>
+			
+		<div class="last_week_stat"> 
+			<h1>Your last week</h1>
+			<div id="avg_sleep" class= "donut_sleep"> </div>
+			<div id="sports" class= "donut_sports"> </div>
+		</div>
+		
 
 	
 	<script> 
@@ -127,6 +166,17 @@ $donut = substr ($donut, 0, -2);
 			colors: ["darkgreen", "lightgreen", "orange", "red", "gray"],
 			resize: false,
 		});
+
+		Morris.Donut({
+			element: 'avg_sleep',
+			data:[<?php echo $avg_sleep_data; ?>],
+			colors:["#377AAF"],
+		})
+		Morris.Donut({
+			element: 'sports',
+			data:[<?php echo $sports_data; ?>],
+			colors:["#3BBBB3"],
+		})
 		
 	</script>
   </body>
