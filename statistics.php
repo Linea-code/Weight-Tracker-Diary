@@ -76,22 +76,25 @@ $donut .="{ label:'No Rating Available', value:".$noscore."}, ";
 
 $donut = substr ($donut, 0, -2);
 
-$stmt = $con->prepare ("SELECT sleep_time, sports  FROM diary_entries WHERE date >= DATE(NOW()) - INTERVAL 6 DAY AND user_id = ?");
+$stmt = $con->prepare ("SELECT  sleep_time, sports  FROM diary_entries WHERE date >= DATE(NOW()) - INTERVAL 6 DAY AND user_id = ?");
 $stmt->bind_param("i", $_SESSION['id']);
 $stmt->execute();
 $result3 = $stmt->get_result();
 $avg_sleep_data = '';
 $sports_data='';
+$number_of_entries ='';
 
 $avg_sleep_time = 0;
 $count_sleep_data = 0;
 $sport_amount = 0;
+$number_of_dates= 0;
 
 while($row = mysqli_fetch_array($result3))
 {
 	$avg_sleep_time += $row['sleep_time'];
 	$count_sleep_data += 1;
 	$sport_amount += $row['sports'];
+	$number_of_dates +=1;
 }
 
 $avg_sleep_time = $avg_sleep_time/$count_sleep_data;
@@ -105,6 +108,25 @@ $avg_sleep_data = substr ($avg_sleep_data, 0, -2);
 $sports_data .="{ label:'Sport Sessions', value:".$sport_amount."}, ";
 
 $sports_data = substr ($sports_data, 0, -2);
+
+
+$number_of_entries .="{ label:'Diary Entries', value:".$number_of_dates."}, ";
+
+$number_of_entries = substr ($number_of_entries, 0, -2);
+
+
+
+$stmt = $con->prepare ("SELECT  sports.sports_kind, count(sports.sports_kind)  FROM sports, diary_entries WHERE sports.id = diary_entries.sports_kind AND date >= DATE(NOW()) - INTERVAL 6 DAY AND user_id = ? GROUP BY sports.sports_kind");
+$stmt->bind_param("i", $_SESSION['id']);
+$stmt->execute();
+$result4 = $stmt->get_result();
+$sports_kind = '';
+
+while($row = mysqli_fetch_array($result4))
+{
+	$sports_kind .="{ label:'".$row["sports_kind"]."', value:".$row[1]."}, ";
+}
+$sports_kind = substr ($sports_kind, 0, -2);
 ?>
 
 <!DOCTYPE html>
@@ -138,8 +160,10 @@ $sports_data = substr ($sports_data, 0, -2);
 			
 		<div class="last_week_stat"> 
 			<h1>Your last week</h1>
+			<div id="num_of_entries" class= "donut_sports"> </div>
 			<div id="avg_sleep" class= "donut_sleep"> </div>
 			<div id="sports" class= "donut_sports"> </div>
+			<div id="sports_kind" class= "donut_sports"> </div>
 		</div>
 		
 
@@ -171,13 +195,24 @@ $sports_data = substr ($sports_data, 0, -2);
 			element: 'avg_sleep',
 			data:[<?php echo $avg_sleep_data; ?>],
 			colors:["#377AAF"],
-		})
+		});
 		Morris.Donut({
 			element: 'sports',
 			data:[<?php echo $sports_data; ?>],
 			colors:["#3BBBB3"],
-		})
+		});
+		Morris.Donut({
+			element: 'num_of_entries',
+			data:[<?php echo $number_of_entries; ?>],
+			colors:["#3BBBB3"],
+		});
 		
+		Morris.Donut({
+			element: 'sports_kind',
+			data:[<?php echo $sports_kind; ?>],
+			colors: ["darkgreen", "lightgreen", "orange", "red"],
+			resize: false,
+		});
 	</script>
   </body>
 	</body>
