@@ -5,13 +5,45 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.header{
-      width: 100px;
-      height: 100px;
-      background: red;
-      border-radius: 50%
-    
+
+.header *{
+  z-index: -1;
+  
 }
+
+.header .ellipse9{
+  /* Ellipse 9 */
+
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  left: 1333px; 
+  top: -26px;
+  /*right: -43px;*/
+  background: #377AAF; 
+  border-radius: 50%;
+}
+.header .ellipse10{
+  /* Ellipse 10 */
+position: absolute;
+width: 84px;
+height: 84px;
+left: 1260px;
+top: 32px;
+background: #3BBBB3;
+border-radius: 50%;
+}
+.header .ellipse11{
+/* Ellipse 11 */
+position: absolute;
+width: 64.5px;
+height: 64.5px;
+left: 1228px;
+top: 0px;
+background: #377AAF;
+border-radius: 50%;
+}
+
 body {
     background-color: #ffffff;
 }
@@ -44,7 +76,8 @@ body {
   text-align: center;
 }
 .About p{
-  text-align: left;
+  text-align: justify;
+  text-justify: newspaper;
 }
 
 .login {
