@@ -6,9 +6,17 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.header *{
+/* .header *{
   z-index: -1;
   
+} */
+.header {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  overflow: hidden;
+  z-index: -1;
+  /* pointer-events: none; */
 }
 
 .header .ellipse9{
@@ -17,9 +25,9 @@
   position: absolute;
   width: 150px;
   height: 150px;
-  left: 1333px; 
+  /* left: 1333px;  */
   top: -26px;
-  /*right: -43px;*/
+  right: -43px;
   background: #377AAF; 
   border-radius: 50%;
 }
@@ -28,17 +36,20 @@
 position: absolute;
 width: 84px;
 height: 84px;
-left: 1260px;
+/* left: 1260px; */
+right: 96px;
 top: 32px;
 background: #3BBBB3;
 border-radius: 50%;
 }
+
 .header .ellipse11{
 /* Ellipse 11 */
 position: absolute;
 width: 64.5px;
 height: 64.5px;
-left: 1228px;
+/* left: 1228px; */
+right: 147.5px;
 top: 0px;
 background: #377AAF;
 border-radius: 50%;
