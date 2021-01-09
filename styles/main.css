@@ -6,7 +6,11 @@
     -moz-osx-font-smoothing: grayscale;
 }
 .header{
-
+      width: 100px;
+      height: 100px;
+      background: red;
+      border-radius: 50%
+    
 }
 body {
     background-color: #ffffff;
@@ -18,7 +22,7 @@ body {
   background-color: #DFF4F3;
   display: block;
   float:initial;
-  width: 49.9%;
+  width: 50%;
   bottom: 0;
   text-align: left;
   left: 0;
@@ -29,7 +33,7 @@ body {
   color: gray;
   font-size: 12px;
   background-color: #DFF4F3;
-  width: 50.1%;  
+  width: 50%;  
   display: block;
   bottom: 0;
   text-align: right;
