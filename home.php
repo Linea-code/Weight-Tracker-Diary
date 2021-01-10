@@ -39,6 +39,12 @@ while($row = mysqli_fetch_array($result))
 }
 $chart_data = substr ($chart_data, 0, -2);
 
+$today = new DateTime();
+
+$date = new DateTime('first day of this month');
+if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
+	$date = DateTime::createFromFormat('Y-m-d',$_GET['date'].'-01');
+}
 ?>
 
 <!DOCTYPE html>
@@ -55,9 +61,16 @@ $chart_data = substr ($chart_data, 0, -2);
 		<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 	</head>
 	<body class="loggedin">
+		<div class="header">
+			<div class="ellipses">
+				<div class="ellipse9"></div>
+				<div class="ellipse10"></div>
+				<div class="ellipse11"></div>
+			</div>
+			<div class="ellipse12"></div>
+		</div>
 		<nav class="navtop">
 			<div>
-				<h1>Website Title</h1>
 				<a href="statistics.php"><i class="fas fa-chart-line"></i>Statistics</a>
 				<a href="daily_questionnaire.html"><i class="fas fa-question"></i>Quest</a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
@@ -67,12 +80,45 @@ $chart_data = substr ($chart_data, 0, -2);
 		<div class="container">
 			<div class="calendar">
 				<div class="month">
-				<i class="fas fa-angle-left prev"></i>
+					<a href=
+						<?php 
+							$prev= (clone $date)->sub(new DateInterval('P1M'));
+							echo "home.php?date=".$prev->format('Y-m'); 
+						?>
+					>
+						<i class="fas fa-angle-left"></i>
+					</a>
 				<div class="date">
-					<h1></h1>
-					<p></p>
+					<h1><?php 
+					$months = [
+						"January",
+						"February",
+						"March",
+						"April",
+						"May",
+						"June",
+						"July",
+						"August",
+						"September",
+						"October",
+						"November",
+						"December",
+					  ];
+
+					  echo $months[(((int) $date->format('m')) - 1) ];
+					?></h1>
+					<p><?php 
+					echo $today->format('Y-m-d');
+					?></p>
 				</div>
-				<i class="fas fa-angle-right next"></i>
+				<a href=
+					<?php 
+						$next = (clone $date)->add(new DateInterval('P1M'));
+						echo "home.php?date=".$next->format('Y-m'); 
+					?>
+				>
+			    	<i class="fas fa-angle-right"></i>
+				</a>
 				</div>
 				<div class="weekdays">
 				<div>Sun</div>
@@ -83,13 +129,53 @@ $chart_data = substr ($chart_data, 0, -2);
 				<div>Fri</div>
 				<div>Sat</div>
 				</div>
-				<div class="days"></div>
+				<div class="days">
+					<?php
+					
+					$prevLastDay = new DateTime("last day of last month");
+
+					for($i = (int) $date->format('w') ; $i > 0; $i--){
+					
+						echo '<div class="prev-date">'.((int) $prevLastDay->format('d') - $i +1).'</div>';
+					}
+
+					for($i =1; $i <= (int) $date->format('t'); $i++) {
+						if(($i == (int) $today->format('d')) and ((int) $date->format('m')) == ((int) $today->format('m'))) {
+							echo '<div class="today"> <a href="daily_questionnaire.html" class="fill-calendarday">'.$i.'</a></div>';
+						} else {
+							$stmt = $con->prepare ("SELECT score FROM diary_entries WHERE user_id = ? AND date = ?");
+							$thisday = clone $date;
+							$thisday->setDate($date->format('Y'), $date->format('m'), $i);
+							$thisday = $thisday->format('Y-m-d');
+							$stmt->bind_param("is", $_SESSION['id'], $thisday );
+							$stmt->execute();
+							$color_array = $stmt->get_result();
+							$color='no_entry';
+
+							while($row = mysqli_fetch_array($color_array))
+							{
+							if($row['score'] >= 7.5){$color = 'darkgreen';}
+							elseif($row['score'] >= 5){$color = 'green';}
+							elseif($row['score'] >= 2.5){$color = 'orange';}
+							elseif($row['score'] > 0){$color = 'red';}
+							}
+
+							echo '<div class="'.$color.'">'.$i.'</div>';
+						}
+					}
+
+					$lastDay = new DateTime($date->format('Y-m-t'));
+
+					for($i= 1; $i <= (6 - (int) $lastDay->format('w')); $i++){
+						echo '<div class="next-date">'.$i.'</div>';
+					}
+					?>
+				</div>
 			</div>
 		</div>
 		<a href="statistics.php"></i><div id="chart" class= "line_chart"> </div></a>
-		
 
-	<script src="calendar.js"></script>
+	<!-- <script src="calendar.js"></script> -->
 	<script> 
 		
 		Morris.Line({
@@ -109,6 +195,11 @@ $chart_data = substr ($chart_data, 0, -2);
 		});
 		
 	</script>
+	<div class="footer">
+			<p> © Copyright 2021 | Linea Schmidt, Simon Shabo
+				<a href="About this website.html"> About this website </a>
+			</p>
+	</div>
   </body>
 	</body>
 </html>

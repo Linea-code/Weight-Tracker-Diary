@@ -10,38 +10,55 @@
   z-index: -1;
   
 }
+.header .ellipses{
+  width: 250px;
+  height: 150px;
+  top: 0;
+  right: 0;
+  position: absolute;
+  
+}
 
-.header .ellipse9{
+.header .ellipses .ellipse9{
   /* Ellipse 9 */
-
   position: absolute;
   width: 150px;
   height: 150px;
-  left: 1333px; 
-  top: -26px;
+  left: 100px;
+  bottom: 50px;
   /*right: -43px;*/
   background: #377AAF; 
   border-radius: 50%;
 }
-.header .ellipse10{
+.header .ellipses .ellipse10{
   /* Ellipse 10 */
 position: absolute;
 width: 84px;
 height: 84px;
-left: 1260px;
-top: 32px;
+top: 20px;
+left: 40px;
 background: #3BBBB3;
 border-radius: 50%;
 }
-.header .ellipse11{
+.header .ellipses .ellipse11{
 /* Ellipse 11 */
 position: absolute;
 width: 64.5px;
 height: 64.5px;
-left: 1228px;
-top: 0px;
 background: #377AAF;
 border-radius: 50%;
+}
+.header .ellipse12{
+  /* Ellipse 12 */
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  left: 0;
+  top:-50px;
+  left: -50px;
+  /*right: -43px;*/
+  background: #3BBBB3; 
+  border-radius: 50%;
 }
 
 body {
@@ -137,40 +154,38 @@ body {
     transition: background-color 0.2s;
 }
 .navtop {
-	background-color: #2f3947;
-	height: 60px;
+  margin-top: 40px;
+  padding-left: 30%;
+	height: 70px;
 	width: 100%;
-	border: 0;
 }
 .navtop div {
-	display: flex;
-	margin: 0 auto;
-	width: 1000px;
-	height: 100%;
+	width: 100%;
+  height: 100%;
 }
-.navtop div h1, .navtop div a {
-	display: inline-flex;
+.navtop div a { 
+
 	align-items: center;
 }
-.navtop div h1 {
-	flex: 1;
-	font-size: 24px;
-	padding: 0;
+/* .navtop div h1 {
+	flex: 0.5;
+	font-size: 30px;
+  padding-left: 5%;
 	margin: 0;
-	color: #eaebed;
+	color: #377AAF;
 	font-weight: normal;
-}
+} */
 .navtop div a {
-	padding: 0 20px;
+	padding: 0 30px;
 	text-decoration: none;
-	color: #c1c4c8;
+	color: #377AAF;
 	font-weight: bold;
 }
 .navtop div a i {
 	padding: 2px 8px 0 0;
 }
 .navtop div a:hover {
-	color: #eaebed;
+	color: #3BBBB3;
 }
 body.loggedin {
 	background-color: #f3f4f7;
@@ -182,7 +197,7 @@ body.loggedin {
 .content h2 {
 	margin: 0;
 	padding: 25px 0;
-	font-size: 22px;
+	font-size: xx-large;
 	border-bottom: 1px solid #e0e0e3;
 	color: #4a536e;
 }
@@ -203,6 +218,13 @@ body.loggedin {
 .content > div p {
 	padding: 5px;
 	margin: 0 0 10px 0;
+}
+
+.content p {
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: x-large;
+  color: #4a536e;
 }
 
 .register {
@@ -285,18 +307,23 @@ body.loggedin {
     padding-right: 50px;
     width: 50%;
     float:left;
-    height: 90vh;
-    color: #eee;
+    height: 80vh;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
-  .calendar {
+.calendar {
     width: auto;
     height: auto;
-    background-color: #222227;
+    background-color: white;
     box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
+  }
+
+.loggedin .container .calender .month a {
+    text-decoration: none;
+    color: black;
   }
   
   .month {
@@ -338,13 +365,13 @@ body.loggedin {
   
   .weekdays div {
     font-size: 0.8rem;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.1rem;
-    width: calc(34.2rem / 7);
+    width: calc(100% / 7);
     display: flex;
     justify-content: center;
     align-items: center;
-    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
   }
   
   .days {
@@ -352,25 +379,41 @@ body.loggedin {
     display: flex;
     flex-wrap: wrap;
     padding: 0.2rem;
+    
   }
   
   .days div {
     font-size: 0.9rem;
-    margin: 0.3rem;
-    width: calc(30.2rem / 7);
+    width: calc(100% / 7);
     height: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
-    transition: background-color 0.2s;
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s;    
   }
   
   .days div:hover:not(.today) {
-    background-color: #262626;
     border: 0.2rem solid #777;
     cursor: pointer;
   }
+
+ .darkgreen{
+    background-color: rgba(0, 100, 0, 0.3);
+  }
+  .green{
+    background-color: rgba(144, 238, 144, 0.3);
+  }
+  .orange{
+    background-color: rgba(255, 166, 0, 0.3);
+  }
+  .red{
+    background-color: rgba(255, 0, 0, 0.3);
+  }
+  .no_entry{
+    background-color: none;
+  }
+  
   
   .prev-date,
   .next-date {
@@ -379,6 +422,11 @@ body.loggedin {
   
   .today {
     background-color: #3BBBB3;
+    border: 0.2rem solid #777;
+  }
+
+  .today:hover{
+    border: 0.2rem solid #777;
   }
 
  a.fill-calendarday{
@@ -389,14 +437,14 @@ body.loggedin {
      font-size: 0.9rem;
      font-size: 0.9rem;
      margin: 0.3rem;
-     width: calc(30.2rem / 7);
+     width: calc(100% / 7);
      height: 3rem;
      display: flex;
      justify-content: center;
      align-items: center;
-     text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+     text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
      transition: background-color 0.2s;
-     color: white;
+     color: black;
  }
 
 
@@ -412,7 +460,6 @@ body.loggedin {
   color: #377AAF ;
   font-size: 36px;
 }
-
 
 .line_chart{
     float:right;

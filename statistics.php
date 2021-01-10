@@ -143,15 +143,21 @@ $sports_kind = substr ($sports_kind, 0, -2);
 		<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 	</head>
 	<body class="loggedin">
+	<div class="header">
+			<div class="ellipses">
+				<div class="ellipse9"></div>
+				<div class="ellipse10"></div>
+				<div class="ellipse11"></div>
+			</div>
+			<div class="ellipse12"></div>
+		</div>
 		<nav class="navtop">
 			<div>
-				<h1>Statistics</h1>
 				<a href="home.php"><i class="fas fa-home"></i>Home</a>
 				<a href="daily_questionnaire.html"><i class="fas fa-question"></i>Quest</a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
-		</nav>
-		
+		</nav>		
 		<div class="overall_stat"> 
 			<h1>Your overall Statistic</h1>
 			<div id="chart" class= "line_chart"></div>
@@ -214,6 +220,7 @@ $sports_kind = substr ($sports_kind, 0, -2);
 			resize: false,
 		});
 	</script>
-  </body>
+		
 	</body>
+	
 </html>

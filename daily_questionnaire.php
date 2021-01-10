@@ -23,7 +23,7 @@ $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_
 if (mysqli_connect_errno()) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
-
+$day_attribute= '';
 $stmt = $con->prepare("INSERT INTO diary_entries (user_id, date, feeling, sleep, sleep_time, sports, sports_kind, weight, individual_entry, score)
 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("isssissdsd", $user_id, $date, $feeling, $sleep, $sleep_time, $sports, $sports_kind, $weight, $individual_entry, $score);
@@ -59,7 +59,15 @@ elseif ($_POST['sleep_time'] == 6 || $_POST['sleep_time'] == 10) {
 else{$sleep_time_score = 4;}
 
 $score = $_POST['feeling'] + ($_POST['sports'] * 2) + (($_POST['sleep'] + $sleep_time_score)/2);
+
+
+
 $stmt->execute();
+
+if($score >= 7.5){$day_attribute="Seems like today was a very good day! Congratulations! Keep going like this. Todays score is amazing and you had ".$sleep_time." hours of sleep tonight.";}
+elseif($score>= 5){$day_attribute ="Seems like today was a good day! Nice! Keep going and stay motivated. Todays score is good and you had ".$sleep_time." hours of sleep tonight.";}
+elseif($score >= 2.5){$day_attribute="Seems like today was not the best day in your life... but never give up and stay motivated. Tomorrow is a new chance: use it! Maybe you could also improve your ".$sleep_time." hours of sleep tonight.";}
+elseif($score > 0){$day_attribute="Seems like today was horrible... but never give up, stay motivated and think of your goals. Tomorrow is a new chance: use it to improve yourself! Maybe there are also more than ".$sleep_time." hours of sleep weiting for you this night.";}
 
 
 
@@ -74,18 +82,24 @@ $stmt->execute();
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	</head>
 	<body class="loggedin">
+		<div class="header">
+			<div class="ellipses">
+				<div class="ellipse9"></div>
+				<div class="ellipse10"></div>
+				<div class="ellipse11"></div>
+			</div>
+			<div class="ellipse12"></div>
+		</div>
 		<nav class="navtop">
 			<div>
-				<h1>Website Title</h1>
-				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
-                <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
-                <a href="daily_questionnaire.html">Quest</a>
-                
+				<a href="home.php"><i class="fas fa-home"></i>Home</a>
+				<a href="statistics.php"><i class="fas fa-chart-line"></i>Statistics</a>
+				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
-		</nav>
+		</nav>		
 		<div class="content">
-			<h2>Home Page</h2>
-			<p>Welcome back, <?=$_SESSION['name']?>!</p>
+			<h2>Thank you,  <?=$_SESSION['name']?>!</h2>
+			<p><?= $day_attribute ?></p>
 		</div>
 	</body>
 </html>

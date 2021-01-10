@@ -6,11 +6,8 @@ function renderCalender() {
 
     $monthDays = $document->querySelector('.days');
 
-    $lastDay = new DateTime(
-        $date('Y'),
-        $date('m') +1,
-        0
-    )->getdate();
+    $lastDay = new DateTime()
+    $lastDay->setDate($date('Y'), $date('m') +1, 0);
 
     $prevLastDay = new DateTime(
         $date('Y'),
@@ -49,7 +46,7 @@ function renderCalender() {
     $days = "";
 
     for($i =1; $i <= $lastDay; $i++){
-        if($i == new Datetime()->getdate() && $date('m' == new DateTime('m')){
+        if($i == new DateTime()->getdate() && $date('m' == new DateTime('m')){
             $days += '<div class="today"> <a href="daily_questionnaire.html" class="fill-calendarday">.$i.</a></div>';)
         } else{
             $days +='<div>.$i.</div>';
