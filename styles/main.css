@@ -112,6 +112,7 @@ body {
     margin: 100px auto;
     border-radius: 25px 25px;
     padding: 10px;
+    margin-top: 150px;
 }
 .login h1 {
     text-align: center;
@@ -148,7 +149,7 @@ body {
 .login form input[type="submit"] {
     width: 100%;
     padding: 15px;
-   margin-top: 20px;
+    margin-top: 20px;
     background-color: #377AAF;
     border: 0;
     cursor: pointer;
@@ -302,7 +303,6 @@ body.loggedin {
     height: 150px;
     left: 1332px;
     top: -23px;
-
     background: #377AAF;
 }
 
@@ -456,6 +456,113 @@ body.loggedin {
      color: black;
  }
 
+/* Questionnaire*/
+.quest {
+  background-color: #f1f1f1;
+}
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+.quest h1 {
+  text-align: center;  
+  font-size: xx-large;
+}
+
+.quest input {
+  padding: 10px;
+  width: auto;
+  font-size: large;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+.quest input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.quest .tab {
+  display: none;
+}
+
+.quest button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: large;
+  font-family: Raleway;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.quest button:hover {
+  opacity: 0.5;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.quest .step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.quest .step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.quest .step.finish {
+  background-color: #4CAF50;
+}
+.quest .stepper_button{
+    font-size: 50px;
+    background-color:white;
+    width: auto;
+    border: none;
+}
+
+.quest .form-radio{
+    text-align: center;
+    font-size: xx-large;
+}
+
+.quest .radio-item{
+    align-items: center;
+    font-size: xx-large;
+}
+.quest .slider{
+    width: 100%;
+}
+
+.quest .hidden{
+    visibility: hidden;
+}
+
+.quest input:checked + label {
+    padding: 5px;
+    background-color: #4CAF50;
+    border-style:initial;
+    border-width: 5px;
+    border-color: #4CAF50;
+    border-radius: 20px;
+}
 
  /* ########chart and Statistics####### */
 
@@ -520,7 +627,7 @@ body.loggedin {
     text-align: center;
     color: #3BBBB3;
     font-size: 50px;
-    padding: 20px 0 20px 0;
+    padding: 50px 0 20px 0;
 }
 
 .welcome p{
@@ -556,29 +663,163 @@ body.loggedin {
 
 
 @media only screen and (max-width: 600px){
+
+  /* Adjust ellipses size /Header */
+  .header .ellipses{
+    width: 180px;
+    height: 100px;
+    top: 0;
+    right: 0;
+    position: absolute;
+    
+  }
+  
+  .header .ellipses .ellipse9{
+    /* Ellipse 9 */
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 80px;
+    bottom: 30px;
+    /*right: -43px;*/
+    background: #377AAF; 
+    border-radius: 50%;
+  }
+  .header .ellipses .ellipse10{
+    /* Ellipse 10 */
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top: 10px;
+  left: 30px;
+  background: #3BBBB3;
+  border-radius: 50%;
+  }
+  .header .ellipses .ellipse11{
+  /* Ellipse 11 */
+  position: absolute;
+  width: 44.5px;
+  height: 44.5px;
+  background: #377AAF;
+  border-radius: 50%;
+  }
+  .header .ellipse12{
+    /* Ellipse 12 */
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 0;
+    top:-30px;
+    left: -30px;
+    /*right: -43px;*/
+    background: #3BBBB3; 
+    border-radius: 50%;
+  }
+
+  /* Adjust register size */
   .register{
     width: 300px;
     margin-top: 150px;
   }
 
-.register form {
-    padding-top: 15px;
-}
+  .register form {
+      padding-top: 15px;
+  }
 
-.register form label {
-    width: 35px;
-    height: 35px;
-    margin: 2px;
-}
-.register form input[type="password"], .register form input[type="text"], .register form input[type="email"] {
-    width: 240px;
-    height: 35px;
-    margin-bottom: 10px;
-}
-.register form input[type="submit"] {
+  .register form label {
+      width: 35px;
+      height: 35px;
+      margin: 2px;
+  }
+  .register form input[type="password"], .register form input[type="text"], .register form input[type="email"] {
+      width: 240px;
+      height: 35px;
+      margin-bottom: 10px;
+  }
+  .register form input[type="submit"] {
+      padding: 10px;
+      margin-top: 15px;
+  }
 
-    padding: 10px;
-    margin-top: 15px;
+/* Ajust login size */
+  .login {
+    width: 300px;
+    margin-top: 150px;
+  }
+  .login form {
+      padding-top: 15px;
+  }
+  .login form label {
+      width: 35px;
+      height: 35px;
+      margin: 2px;
+  }
+  .login form input[type="password"], .login form input[type="text"] {
+      width: 240px;
+      height: 35px;
+      margin-bottom: 10px;
+  }
+  .login form input[type="submit"] {
+      padding: 10px;
+      margin-top: 15px;
+  }
+
+/* adjust calendar size */
+  .container {
+    width: 100%;
+    margin-bottom: 5%;
+  }
+
+  /* Adjust Line chart size */
+  .line_chart{
+    width: 100%;
+  }
+
+  /* Adjust donut chart size on statistics page */
+  .donut_chart{
+    width: 100%;
+    margin-bottom: 5%;
+  }
+
+  /* Adjust small donut charts size on statistics page */  
+  .donut_sleep{
+    width: 50%;   
+  }
+  .donut_sports{
+    width: 50%;
+  }
+
+  /* adjust quest*/
+  .quest h1 {
+    text-align: center;  
+    font-size: x-large;
+  }
+
+  /* adjust Quest feedback*/
+
+  .content {
+    width: 300px;
+    margin: 0 auto;
+  }
+  .content h2 {
+    font-size: x-large;
+  }
+
+  .content > p table td:first-child, .content > div table td:first-child {
+    font-weight: bold;
+    color: #4a536e;
+    padding-right: 15px;
+  }
   
+  .content p {
+    font-size: large;
+  }
+
+  /* adjust index html */
+  .welcome p{
+    text-align: center;
+    color: #5b6574;
+    font-size: 24px;
+    padding: 20px 50px 50px 50px;
 }
 }
