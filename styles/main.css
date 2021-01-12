@@ -118,7 +118,7 @@ body {
     color: #5b6574;
     font-size: 24px;
     padding: 20px 0 20px 0;
-    border-bottom: 1px solid #dee0e4;
+    border-bottom: 2px solid #dee0e4;
 }
 .login form {
     display: flex;
@@ -248,7 +248,7 @@ body.loggedin {
     color: #5b6574;
     font-size: 24px;
     padding: 20px 0 20px 0;
-    border-bottom: 1px solid #3BBBB3;
+    border-bottom: 2px solid #dee0e4;
 
 }
 .register form {
