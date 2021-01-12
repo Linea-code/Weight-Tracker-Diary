@@ -242,6 +242,7 @@ body.loggedin {
     margin: 100px auto;
     border-radius: 25px 25px;
     padding: 10px;
+    margin-top: 150px;
 }
 .register h1 {
     text-align: center;
@@ -551,4 +552,33 @@ body.loggedin {
   text-align: center;
   background-color: #3BBBB3;
   margin-left: 10px;
+}
+
+
+@media only screen and (max-width: 600px){
+  .register{
+    width: 300px;
+    margin-top: 150px;
+  }
+
+.register form {
+    padding-top: 15px;
+}
+
+.register form label {
+    width: 35px;
+    height: 35px;
+    margin: 2px;
+}
+.register form input[type="password"], .register form input[type="text"], .register form input[type="email"] {
+    width: 240px;
+    height: 35px;
+    margin-bottom: 10px;
+}
+.register form input[type="submit"] {
+
+    padding: 10px;
+    margin-top: 15px;
+  
+}
 }
