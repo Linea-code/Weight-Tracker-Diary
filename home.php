@@ -190,9 +190,6 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 			data:[<?php echo $chart_data; ?>],
 			parseTime: false,
 			xkey: 'date',
-			/* xLabelFormat: function(d) {
-				return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov', 'Dec'][d.getMonth()] + ' ' + d.getDate();
-			} */
 			xLabelAngle: 60,
 			xLabels: "month",
 			ykeys: ['weight'],

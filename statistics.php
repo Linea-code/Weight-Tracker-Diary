@@ -32,7 +32,7 @@ $chart_data = '';
 
 while($row = mysqli_fetch_array($result))
 {
-	$chart_data .="{ date:'".$row["date"]."', score:".$row["weight"]."}, ";
+	$chart_data .="{ date:'".$row["date"]."', weight:".$row["weight"]."}, ";
 }
 $chart_data = substr ($chart_data, 0, -2);
 
@@ -185,8 +185,8 @@ $sports_kind = substr ($sports_kind, 0, -2);
 			xkey: 'date',
 			xLabelAngle: 60,
 			xLabels: "month",
-			ykeys: ['score'],
-			labels: ['Score'],
+			ykeys: ['weight'],
+			labels: ['Weight'],
 			hideHover:'auto',
 			lineColors:['#3BBBB3'],
 			resize: false,
