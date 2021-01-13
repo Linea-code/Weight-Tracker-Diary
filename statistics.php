@@ -97,7 +97,9 @@ while($row = mysqli_fetch_array($result3))
 	$number_of_dates +=1;
 }
 
-$avg_sleep_time = $avg_sleep_time/$count_sleep_data;
+if ($count_sleep_data > 1){
+	$avg_sleep_time = $avg_sleep_time/$count_sleep_data;
+}
 
 $avg_sleep_data .="{ label:'Average Sleep Time', value:".$avg_sleep_time."}, ";
 
@@ -220,6 +222,11 @@ $sports_kind = substr ($sports_kind, 0, -2);
 			resize: false,
 		});
 	</script>
+	<div class="footer">
+			<p> © Copyright 2021 | Linea Schmidt, Simon Shabo
+				<a href="About this website.html"> About this website </a>
+			</p>
+	</div>
 		
 	</body>
 	

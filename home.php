@@ -59,6 +59,7 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
 	</head>
 	<body class="loggedin">
 		<div class="header">
@@ -69,11 +70,12 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 			</div>
 			<div class="ellipse12"></div>
 		</div>
+
 		<nav class="navtop">
 			<div>
-				<a href="statistics.php"><i class="fas fa-chart-line"></i>Statistics</a>
-				<a href="daily_questionnaire.html"><i class="fas fa-question"></i>Quest</a>
-				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+				<div class="navlinks"><a href="statistics.php"><i class="fas fa-chart-line"></i>Statistics</a></div>
+				<div class="navlinks"><a href="daily_questionnaire.html"><i class="fas fa-question"></i>Quest</a></div>
+				<div class="navlinks"><a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a></div>
 			</div>
 		</nav>
 
@@ -159,8 +161,13 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 							elseif($row['score'] >= 2.5){$color = 'orange';}
 							elseif($row['score'] > 0){$color = 'red';}
 							}
-
-							echo '<div class="'.$color.'">'.$i.'</div>';
+							
+							if($color !='no_entry'){
+								echo '<div class="'.$color.'"><a href="visit_entry.php?date='.$thisday.'">'.$i.'</a></div>';
+							}
+							else{
+								echo '<div class="'.$color.'">'.$i.'</div> ';
+							}
 						}
 					}
 

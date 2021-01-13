@@ -87,12 +87,19 @@ body {
 .footer p{
   display: inline;
   float: right;
-  margin:0%
+  padding-right: 3%;
+  padding-left: 3%;
+  margin:0%;
+}
+
+.footer a{
+  text-decoration: none;
+  color: gray;
 }
 .footer a:link{
   text-decoration: none;
   color: gray;
-  margin-left: 15px;
+  margin-left: 50px;
   }
 
 
@@ -172,18 +179,14 @@ body {
 	width: 100%;
   height: 100%;
 }
-.navtop div a { 
 
+.navtop .navlinks{
+  display: inline;
+}
+.navtop div a { 
 	align-items: center;
 }
-/* .navtop div h1 {
-	flex: 0.5;
-	font-size: 30px;
-  padding-left: 5%;
-	margin: 0;
-	color: #377AAF;
-	font-weight: normal;
-} */
+
 .navtop div a {
 	padding: 0 30px;
 	text-decoration: none;
@@ -196,6 +199,7 @@ body {
 .navtop div a:hover {
 	color: #3BBBB3;
 }
+
 body.loggedin {
 	background-color: #f3f4f7;
 }
@@ -312,13 +316,14 @@ body.loggedin {
 /* #######CALENDAR######### */
 
 .container {
+    margin-top: 50px;
+    margin-bottom: 50px;
     padding-left: 50px ;
     padding-right: 50px;
     width: 50%;
     float:left;
     height: 80vh;
     color: black;
-    display: flex;
     justify-content: center;
     align-items: center;
   }
@@ -401,6 +406,11 @@ body.loggedin {
     text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
     transition: background-color 0.2s;    
   }
+
+  .days div a{
+    text-decoration: none;
+    color: black;
+  }
   
   .days div:hover:not(.today) {
     border: 0.2rem solid #777;
@@ -462,7 +472,7 @@ body.loggedin {
 }
 #regForm {
   background-color: #ffffff;
-  margin: 100px auto;
+  margin: 150px auto;
   font-family: Raleway;
   padding: 40px;
   width: 70%;
@@ -555,6 +565,10 @@ body.loggedin {
     visibility: hidden;
 }
 
+.quest label{
+  font-size: xx-large;
+}
+
 .quest input:checked + label {
     padding: 5px;
     background-color: #4CAF50;
@@ -588,7 +602,8 @@ body.loggedin {
   float:left;
   width: 40%;
   height: 80vh;
-  padding-top: 2rem;  
+  padding-top: 2rem; 
+
 }
 .last_week_stat{
   width:100%;
@@ -661,8 +676,16 @@ body.loggedin {
   margin-left: 10px;
 }
 
+@media only screen and (max-width: 950px){
+   
+  .navtop {
+    padding-left: 15%;
+    height: 70px;
+    width: 100%;
+  }
+}
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 800px){
 
   /* Adjust ellipses size /Header */
   .header .ellipses{
@@ -767,7 +790,7 @@ body.loggedin {
 /* adjust calendar size */
   .container {
     width: 100%;
-    margin-bottom: 5%;
+    margin-bottom: 15%;
   }
 
   /* Adjust Line chart size */
@@ -790,10 +813,18 @@ body.loggedin {
   }
 
   /* adjust quest*/
+  #regForm {
+    margin: 120px auto;
+    padding: 20px;
+  }
   .quest h1 {
     text-align: center;  
     font-size: x-large;
   }
+  .quest label{
+    font-size: x-large;
+  }
+  
 
   /* adjust Quest feedback*/
 
@@ -822,4 +853,46 @@ body.loggedin {
     font-size: 24px;
     padding: 20px 50px 50px 50px;
 }
+
+/*adjust footer*/
+
+.footer{
+  font-size: 8px;
+}
+.footer p{
+  padding-right: 2%;
+  padding-left: 2%;
+}
+.footer a{
+  text-decoration: none;
+  color: gray;
+}
+.footer a:link{
+  text-decoration: none;
+  color: gray;
+  margin-left: 15px;
+  }
+
+.navtop {
+  margin-top: 20px;
+  padding-left: 10%;
+  height: 70px;
+  width: 100%;
+}
+}
+
+@media only screen and (max-width: 670px){
+  .navtop {
+    margin-top: 5px;
+    padding-left: 30%;
+
+  }
+  .navtop .navlinks{
+    display: block;
+    height: 20px;
+  }
+  .navtop div a {
+    font-size: 14px;
+    padding: 0 15px;
+  }
 }
