@@ -29,7 +29,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("isssissdsd", $user_id, $date, $feeling, $sleep, $sleep_time, $sports, $sports_kind, $weight, $individual_entry, $score);
 
 $user_id = $_SESSION['id'];
-$date = date("Y-m-d");
+$date = $_GET['date'];
 $feeling = $_POST['feeling'];
 $sleep = $_POST['sleep'];
 $sleep_time = $_POST['sleep_time'];

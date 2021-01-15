@@ -147,8 +147,12 @@ input:checked + label {
     </div>
     <div class="ellipse12"></div>
   </div>
+<?php 
 
-<form id="regForm" action="daily_questionnaire.php" method="post">
+$thisday = $_GET['date'];
+?>
+
+<form id="regForm" action=<?php echo "daily_questionnaire.php?date=$thisday"?> method="post">
   <!-- One "tab" for each step in the form: -->
   <div class="tab">
     <h1>How do you feel today?</h1>

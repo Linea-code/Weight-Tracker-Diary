@@ -47,6 +47,7 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 }
 ?>
 
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -143,7 +144,7 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 
 					for($i =1; $i <= (int) $date->format('t'); $i++) {
 						if(($i == (int) $today->format('d')) and ((int) $date->format('m')) == ((int) $today->format('m'))) {
-							echo '<div class="today"> <a href="daily_questionnaire.html" class="fill-calendarday">'.$i.'</a></div>';
+							echo '<div class="today"> <a href="daily_questionnaire_steps.php?date='.$thisday.'" class="fill-calendarday">'.$i.'</a></div>';
 						} else {
 							$stmt = $con->prepare ("SELECT score FROM diary_entries WHERE user_id = ? AND date = ?");
 							$thisday = clone $date;
@@ -166,7 +167,7 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 								echo '<div class="'.$color.'"><a href="visit_entry.php?date='.$thisday.'">'.$i.'</a></div>';
 							}
 							else{
-								echo '<div class="'.$color.'">'.$i.'</div> ';
+								echo '<div class="'.$color.'"><a href="daily_questionnaire_steps.php?date='.$thisday.'" class="fill-calendarday">'.$i.'</a></div> ';
 							}
 						}
 					}
@@ -195,7 +196,7 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 			ykeys: ['weight'],
 			labels: ['Weight'],
 			hideHover:'auto',
-			lineColors:['#3BBBB3']
+			lineColors:['#3BBBB3'],
 		});
 		
 	</script>
