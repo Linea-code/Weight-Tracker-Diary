@@ -240,6 +240,30 @@ body.loggedin {
   color: #4a536e;
 }
 
+.flexbox{
+  display: flex;
+  align-content: center;
+  padding: 50px 0;
+}
+
+.delete_account {
+  margin-bottom: 50px;
+}
+
+div.delete{
+  text-align: center;
+}
+
+.delete a{
+  text-decoration: none;
+  color: #4a536e;
+  font-weight: bold;
+  font-size: large;
+  padding: 1%;
+  background-color: lightgray;
+  border-radius: 25px;
+}
+
 .register {
     width: 400px;
     background-color: #DFF4F3;
@@ -316,21 +340,13 @@ body.loggedin {
 /* #######CALENDAR######### */
 
 .container {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    padding-left: 50px ;
-    padding-right: 50px;
-    width: 50%;
-    float:left;
-    height: 80vh;
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 0 50px;
     color: black;
-    justify-content: center;
-    align-items: center;
   }
   
 .calendar {
-    width: auto;
-    height: auto;
     background-color: white;
     box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
   }
@@ -429,10 +445,6 @@ body.loggedin {
   .red{
     background-color: rgba(255, 0, 0, 0.3);
   }
-  .no_entry{
-    background-color: none;
-  }
-  
   
   .prev-date,
   .next-date {
@@ -581,33 +593,28 @@ body.loggedin {
  /* ########chart and Statistics####### */
 
 .overall_stat{
-  width:100%;
+  display: flex;
   height: 100vh;
 }
 
-.overall_stat h1{
+.statistic_header{
   text-align: center;
   color: #377AAF ;
   font-size: 36px;
 }
 
 .line_chart{
-    float:right;
-    width: 50%;
-    height: 80vh;
-    padding-top: 2rem;
+    flex-grow:1;
+    flex-basis: 0;
 }
 
 .donut_chart{
-  float:left;
-  width: 40%;
-  height: 80vh;
-  padding-top: 2rem; 
+  flex-grow:1;
+  flex-basis: 0; 
 
 }
 .last_week_stat{
-  width:100%;
-  height: 100vh;
+  display: flex;
 }
 
 .last_week_stat h1{
@@ -617,20 +624,9 @@ body.loggedin {
 
 }
 
-.donut_sleep{
-  float:left;
-  width: 25%;
-  height: 60vh;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-.donut_sports{
-  float:left;
-  width: 25%;
-  height: 60vh;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-
+.donut_small{
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
 /* ######################FIRST SCREEN LOGIN OR REGISTER############################## */
@@ -786,30 +782,18 @@ body.loggedin {
       padding: 10px;
       margin-top: 15px;
   }
+/*Adjust calender and Statistic on home*/
 
-/* adjust calendar size */
-  .container {
-    width: 100%;
-    margin-bottom: 15%;
+  .flexbox {
+    flex-direction: column;
   }
 
-  /* Adjust Line chart size */
-  .line_chart{
-    width: 100%;
+  .overall_stat{
+    flex-direction: column;
   }
 
-  /* Adjust donut chart size on statistics page */
-  .donut_chart{
-    width: 100%;
-    margin-bottom: 5%;
-  }
-
-  /* Adjust small donut charts size on statistics page */  
-  .donut_sleep{
-    width: 50%;   
-  }
-  .donut_sports{
-    width: 50%;
+  .last_week_stat{
+    flex-direction: column;
   }
 
   /* adjust quest*/

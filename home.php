@@ -80,108 +80,130 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 			</div>
 		</nav>
 
-		<div class="container">
-			<div class="calendar">
-				<div class="month">
+		<div class="flexbox">
+			<div class="container">
+				<div class="calendar">
+					<div class="month">
+						<a href=
+							<?php 
+								$prev= (clone $date)->sub(new DateInterval('P1M'));
+								echo "home.php?date=".$prev->format('Y-m'); 
+							?>
+						>
+							<i class="fas fa-angle-left"></i>
+						</a>
+					<div class="date">
+						<h1><?php 
+						$months = [
+							"January",
+							"February",
+							"March",
+							"April",
+							"May",
+							"June",
+							"July",
+							"August",
+							"September",
+							"October",
+							"November",
+							"December",
+						];
+
+						echo $months[(((int) $date->format('m')) - 1) ];
+						?></h1>
+						<p><?php 
+						echo $today->format('Y-m-d');
+						?></p>
+					</div>
 					<a href=
 						<?php 
-							$prev= (clone $date)->sub(new DateInterval('P1M'));
-							echo "home.php?date=".$prev->format('Y-m'); 
+							$next = (clone $date)->add(new DateInterval('P1M'));
+							echo "home.php?date=".$next->format('Y-m'); 
 						?>
 					>
-						<i class="fas fa-angle-left"></i>
+						<i class="fas fa-angle-right"></i>
 					</a>
-				<div class="date">
-					<h1><?php 
-					$months = [
-						"January",
-						"February",
-						"March",
-						"April",
-						"May",
-						"June",
-						"July",
-						"August",
-						"September",
-						"October",
-						"November",
-						"December",
-					  ];
+					</div>
+					<div class="weekdays">
+					<div>Sun</div>
+					<div>Mon</div>
+					<div>Tue</div>
+					<div>Wed</div>
+					<div>Thu</div>
+					<div>Fri</div>
+					<div>Sat</div>
+					</div>
+					<div class="days">
+						<?php
+						
+						$prevLastDay = new DateTime("last day of last month");
 
-					  echo $months[(((int) $date->format('m')) - 1) ];
-					?></h1>
-					<p><?php 
-					echo $today->format('Y-m-d');
-					?></p>
-				</div>
-				<a href=
-					<?php 
-						$next = (clone $date)->add(new DateInterval('P1M'));
-						echo "home.php?date=".$next->format('Y-m'); 
-					?>
-				>
-			    	<i class="fas fa-angle-right"></i>
-				</a>
-				</div>
-				<div class="weekdays">
-				<div>Sun</div>
-				<div>Mon</div>
-				<div>Tue</div>
-				<div>Wed</div>
-				<div>Thu</div>
-				<div>Fri</div>
-				<div>Sat</div>
-				</div>
-				<div class="days">
-					<?php
-					
-					$prevLastDay = new DateTime("last day of last month");
+						for($i = (int) $date->format('w') ; $i > 0; $i--){
+						
+							echo '<div class="prev-date">'.((int) $prevLastDay->format('d') - $i +1).'</div>';
+						}
 
-					for($i = (int) $date->format('w') ; $i > 0; $i--){
-					
-						echo '<div class="prev-date">'.((int) $prevLastDay->format('d') - $i +1).'</div>';
-					}
+						for($i =1; $i <= (int) $date->format('t'); $i++) {
+							if(($i == (int) $today->format('d')) and ((int) $date->format('m')) == ((int) $today->format('m'))) {
+								echo '<div class="today"> <a href="daily_questionnaire_steps.php?date='.$thisday_formatted.'" class="fill-calendarday">'.$i.'</a></div>';
+							} else {
+								$stmt = $con->prepare ("SELECT score FROM diary_entries WHERE user_id = ? AND date = ?");
+								$thisday = clone $date;
+								$thisday->setDate($date->format('Y'), $date->format('m'), $i);
+								$thisday_formatted = $thisday->format('Y-m-d');
+								$stmt->bind_param("is", $_SESSION['id'], $thisday_formatted);
+								$stmt->execute();
+								$color_array = $stmt->get_result();
+								$color = null;
 
-					for($i =1; $i <= (int) $date->format('t'); $i++) {
-						if(($i == (int) $today->format('d')) and ((int) $date->format('m')) == ((int) $today->format('m'))) {
-							echo '<div class="today"> <a href="daily_questionnaire_steps.php?date='.$thisday.'" class="fill-calendarday">'.$i.'</a></div>';
-						} else {
-							$stmt = $con->prepare ("SELECT score FROM diary_entries WHERE user_id = ? AND date = ?");
-							$thisday = clone $date;
-							$thisday->setDate($date->format('Y'), $date->format('m'), $i);
-							$thisday = $thisday->format('Y-m-d');
-							$stmt->bind_param("is", $_SESSION['id'], $thisday );
-							$stmt->execute();
-							$color_array = $stmt->get_result();
-							$color='no_entry';
-
-							while($row = mysqli_fetch_array($color_array))
-							{
-							if($row['score'] >= 7.5){$color = 'darkgreen';}
-							elseif($row['score'] >= 5){$color = 'green';}
-							elseif($row['score'] >= 2.5){$color = 'orange';}
-							elseif($row['score'] > 0){$color = 'red';}
-							}
-							
-							if($color !='no_entry'){
-								echo '<div class="'.$color.'"><a href="visit_entry.php?date='.$thisday.'">'.$i.'</a></div>';
-							}
-							else{
-								echo '<div class="'.$color.'"><a href="daily_questionnaire_steps.php?date='.$thisday.'" class="fill-calendarday">'.$i.'</a></div> ';
+								while($row = mysqli_fetch_array($color_array))
+								{
+								if($row['score'] >= 7.5){$color = 'darkgreen';}
+								elseif($row['score'] >= 5){$color = 'green';}
+								elseif($row['score'] >= 2.5){$color = 'orange';}
+								elseif($row['score'] > 0){$color = 'red';}
+								}
+								
+								if($color){
+									echo '<div class="'.$color.'"><a href="visit_entry.php?date='.$thisday_formatted.'">'.$i.'</a></div>';
+								}
+								elseif($today >= $thisday){ # check if thisday < today
+									echo '<div><a href="daily_questionnaire_steps.php?date='.$thisday_formatted.'" class="fill-calendarday">'.$i.'</a></div> ';
+								}
+								else{
+									echo '<div><a>'.$i.'</a></div> ';
+								}
 							}
 						}
-					}
 
-					$lastDay = new DateTime($date->format('Y-m-t'));
+						$lastDay = new DateTime($date->format('Y-m-t'));
 
-					for($i= 1; $i <= (6 - (int) $lastDay->format('w')); $i++){
-						echo '<div class="next-date">'.$i.'</div>';
-					}
-					?>
+						for($i= 1; $i <= (6 - (int) $lastDay->format('w')); $i++){
+							echo '<div class="next-date">'.$i.'</div>';
+						}
+						?>
+					</div>
 				</div>
+			</div>	
+			<div class="line_chart">
+				<a href="statistics.php">
+					<div id="chart"></div>
+				</a>
 			</div>
 		</div>
-		<a href="statistics.php"></i><div id="chart" class= "line_chart"> </div></a>
+	
+	<div class="delete_account">
+		<div class="delete">
+			<a class="delete" href="delete_account.php"><i class="fas fa-trash-alt"></i> Delete Account</a>
+		</div>
+	</div>
+		
+	<div class="footer">
+			<p> © Copyright 2021 | Linea Schmidt, Simon Shabo
+				<a href="About this website.html"> About this website </a>
+			</p>
+	</div>
+		
 
 	<!-- <script src="calendar.js"></script> -->
 	<script> 
@@ -200,11 +222,8 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 		});
 		
 	</script>
-	<div class="footer">
-			<p> © Copyright 2021 | Linea Schmidt, Simon Shabo
-				<a href="About this website.html"> About this website </a>
-			</p>
-	</div>
+
+	
   </body>
 	</body>
 </html>

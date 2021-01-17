@@ -108,9 +108,13 @@ $message = 'It was a '.$feeling.' day. In the neight you had '.$hours_sleep.' ho
             <p><?= $message ?></p>
             <?php
             if($personal_com != ''){
-                echo '<p>Your note: '.$personal_com;
+                echo '<p>Your note: '.$personal_com.'</p>';
             }
             ?>   
-		</div>
+        </div>
+        
+        <div class="delete">
+            <a href=<?php echo "delete_entry.php?date=".$thisdate ?>><i class="fas fa-trash-alt"></i> Delete Entry</a>
+        </div>
 	</body>
 </html>

@@ -131,6 +131,7 @@ while($row = mysqli_fetch_array($result4))
 $sports_kind = substr ($sports_kind, 0, -2);
 ?>
 
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -156,22 +157,22 @@ $sports_kind = substr ($sports_kind, 0, -2);
 		<nav class="navtop">
 			<div>
 				<a href="home.php"><i class="fas fa-home"></i>Home</a>
-				<a href="daily_questionnaire.html"><i class="fas fa-question"></i>Quest</a>
+				<a href="daily_questionnaire_steps.php"><i class="fas fa-question"></i>Quest</a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
-		</nav>		
+		</nav>	
+		<h1 class="statistic_header">Your overall Statistic</h1>	
 		<div class="overall_stat"> 
-			<h1>Your overall Statistic</h1>
-			<div id="chart" class= "line_chart"></div>
 			<div id="donut" class= "donut_chart"> </div>
+			<div id="chart" class= "line_chart"></div>
 		</div>
-			
+		
+		<h1 class="statistic_header">Your last week</h1>
 		<div class="last_week_stat"> 
-			<h1>Your last week</h1>
-			<div id="num_of_entries" class= "donut_sports"> </div>
-			<div id="avg_sleep" class= "donut_sleep"> </div>
-			<div id="sports" class= "donut_sports"> </div>
-			<div id="sports_kind" class= "donut_sports"> </div>
+			<div id="num_of_entries" class="donut_small"> </div>
+			<div id="avg_sleep" class="donut_small"> </div>
+			<div id="sports" class="donut_small"> </div>
+			<div id="sports_kind" class="donut_small"> </div>
 		</div>
 		
 
