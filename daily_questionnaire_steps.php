@@ -382,7 +382,7 @@ function fixStepIndicator(n) {
 
   <div class="footer">
     <p> &copy; Copyright 2021 | Linea Schmidt, Simon Shabo
-      <a href="About this website.html"> About this website</a>
+      <a href="About_this_website.html"> About this website</a>
     </p>
   </div>
 </body>

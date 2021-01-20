@@ -101,5 +101,10 @@ elseif($score > 0){$day_attribute="Seems like today was horrible... but never gi
 			<h2>Thank you,  <?=$_SESSION['name']?>!</h2>
 			<p><?= $day_attribute ?></p>
 		</div>
+		<div class="footer">
+        <p> &copy; Copyright 2021 | Linea Schmidt, Simon Shabo
+            <a href="About_this_website.html"> About this website</a>
+        </p>
+    </div>
 	</body>
 </html>

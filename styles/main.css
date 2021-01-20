@@ -207,9 +207,8 @@ body.loggedin {
 	width: 1000px;
 	margin: 0 auto;
 }
-.content h2 {
+h2 {
 	margin: 0;
-	padding: 25px 0;
 	font-size: xx-large;
 	border-bottom: 1px solid #e0e0e3;
 	color: #4a536e;
@@ -462,8 +461,6 @@ div.delete{
 
  a.fill-calendarday{
      text-align: center;
-     height: 100%;
-     width: 100%;
      text-decoration: none;
      font-size: 0.9rem;
      font-size: 0.9rem;
@@ -611,7 +608,6 @@ div.delete{
 .donut_chart{
   flex-grow:1;
   flex-basis: 0; 
-
 }
 .last_week_stat{
   display: flex;
@@ -706,21 +702,21 @@ div.delete{
   }
   .header .ellipses .ellipse10{
     /* Ellipse 10 */
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  top: 10px;
-  left: 30px;
-  background: #3BBBB3;
-  border-radius: 50%;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    top: 10px;
+    left: 30px;
+    background: #3BBBB3;
+    border-radius: 50%;
   }
   .header .ellipses .ellipse11{
-  /* Ellipse 11 */
-  position: absolute;
-  width: 44.5px;
-  height: 44.5px;
-  background: #377AAF;
-  border-radius: 50%;
+    /* Ellipse 11 */
+    position: absolute;
+    width: 44.5px;
+    height: 44.5px;
+    background: #377AAF;
+    border-radius: 50%;
   }
   .header .ellipse12{
     /* Ellipse 12 */
@@ -742,7 +738,7 @@ div.delete{
   }
 
   .register form {
-      padding-top: 15px;
+    padding-top: 15px;
   }
 
   .register form label {
@@ -795,6 +791,7 @@ div.delete{
   .last_week_stat{
     flex-direction: column;
   }
+
 
   /* adjust quest*/
   #regForm {

@@ -74,8 +74,8 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 
 		<nav class="navtop">
 			<div>
-				<div class="navlinks"><a href="statistics.php"><i class="fas fa-chart-line"></i>Statistics</a></div>
-				<div class="navlinks"><a href="daily_questionnaire.html"><i class="fas fa-question"></i>Quest</a></div>
+				<?php if($chart_data !=""){echo "<div class='navlinks'><a href='statistics.php'><i class='fas fa-chart-line'></i>Statistics</a></div>";}?>
+				<div class="navlinks"><a href=<?php echo "daily_questionnaire_steps.php?date=".$today->format('Y-m-d') ?>><i class="fas fa-question"></i>Quest</a></div>
 				<div class="navlinks"><a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a></div>
 			</div>
 		</nav>
@@ -167,8 +167,8 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 								if($color){
 									echo '<div class="'.$color.'"><a href="visit_entry.php?date='.$thisday_formatted.'">'.$i.'</a></div>';
 								}
-								elseif($today >= $thisday){ # check if thisday < today
-									echo '<div><a href="daily_questionnaire_steps.php?date='.$thisday_formatted.'" class="fill-calendarday">'.$i.'</a></div> ';
+								elseif($today >= $thisday){ 
+									echo '<div><a href="daily_questionnaire_steps.php?date='.$thisday_formatted.'" class="fill-calendarday">'.$i.'</a></div>';
 								}
 								else{
 									echo '<div><a>'.$i.'</a></div> ';
@@ -185,11 +185,19 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 					</div>
 				</div>
 			</div>	
-			<div class="line_chart">
-				<a href="statistics.php">
-					<div id="chart"></div>
-				</a>
-			</div>
+			<?php
+			if ($chart_data == ""){
+				echo " <h1> Add a new diary entry to see your weight <br> and how you improve! <br> Your weight development will be depicted in a diagram <br> after you create the first entry. <br> Also the menu point  <i class='fas fa-chart-line'></i>  Statistics will be available <br> if you provided some information!</h1>";
+			}
+			else{
+				echo "<div class='line_chart'>
+							<h1 class='statistic_header'>Weight - Overview</h1>
+							<a href='statistics.php'>
+								<div id='chart'></div>
+							</a>
+						</div>";
+			}
+			?>
 		</div>
 	
 	<div class="delete_account">
@@ -199,8 +207,8 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 	</div>
 		
 	<div class="footer">
-			<p> © Copyright 2021 | Linea Schmidt, Simon Shabo
-				<a href="About this website.html"> About this website </a>
+			<p> &copy; Copyright 2021 | Linea Schmidt, Simon Shabo
+				<a href="About_this_website.html"> About this website </a>
 			</p>
 	</div>
 		
@@ -208,10 +216,11 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 	<!-- <script src="calendar.js"></script> -->
 	<script> 
 		
-		Morris.Line({
+		Morris.Area({
 			element: 'chart',
 			data:[<?php echo $chart_data; ?>],
 			parseTime: false,
+			fillOpacity: 0.1,
 			xkey: 'date',
 			xLabelAngle: 60,
 			xLabels: "month",
@@ -219,6 +228,7 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 			labels: ['Weight'],
 			hideHover:'auto',
 			lineColors:['#3BBBB3'],
+
 		});
 		
 	</script>

@@ -116,5 +116,10 @@ $message = 'It was a '.$feeling.' day. In the neight you had '.$hours_sleep.' ho
         <div class="delete">
             <a href=<?php echo "delete_entry.php?date=".$thisdate ?>><i class="fas fa-trash-alt"></i> Delete Entry</a>
         </div>
+        <div class="footer">
+        <p> &copy; Copyright 2021 | Linea Schmidt, Simon Shabo
+            <a href="About_this_website.html"> About this website</a>
+        </p>
+    </div>
 	</body>
 </html>

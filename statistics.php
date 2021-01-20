@@ -129,6 +129,9 @@ while($row = mysqli_fetch_array($result4))
 	$sports_kind .="{ label:'".$row["sports_kind"]."', value:".$row[1]."}, ";
 }
 $sports_kind = substr ($sports_kind, 0, -2);
+
+$today = new DateTime();
+
 ?>
 
 
@@ -153,12 +156,12 @@ $sports_kind = substr ($sports_kind, 0, -2);
 				<div class="ellipse11"></div>
 			</div>
 			<div class="ellipse12"></div>
-		</div>
+	</div>
 		<nav class="navtop">
 			<div>
-				<a href="home.php"><i class="fas fa-home"></i>Home</a>
-				<a href="daily_questionnaire_steps.php"><i class="fas fa-question"></i>Quest</a>
-				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+				<div class="navlinks"><a href="home.php"><i class="fas fa-home"></i>Home</a></div>
+				<div class="navlinks"><a href=<?php echo "daily_questionnaire_steps.php?date=".$today->format('Y-m-d') ?>><i class="fas fa-question"></i>Quest</a></div>
+				<div class="navlinks"><a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a></div>
 			</div>
 		</nav>	
 		<h1 class="statistic_header">Your overall Statistic</h1>	
@@ -179,13 +182,14 @@ $sports_kind = substr ($sports_kind, 0, -2);
 	
 	<script> 
 		
-		Morris.Line({
+		Morris.Area({
 			element: 'chart',
 			data:[<?php echo $chart_data; ?>],
 			parseTime: false,
 			xkey: 'date',
 			xLabelAngle: 60,
 			xLabels: "month",
+			fillOpacity: 0.1,
 			ykeys: ['weight'],
 			labels: ['Weight'],
 			hideHover:'auto',
@@ -224,8 +228,8 @@ $sports_kind = substr ($sports_kind, 0, -2);
 		});
 	</script>
 	<div class="footer">
-			<p> © Copyright 2021 | Linea Schmidt, Simon Shabo
-				<a href="About this website.html"> About this website </a>
+			<p> &copy; Copyright 2021 | Linea Schmidt, Simon Shabo
+				<a href="About_this_website.html"> About this website </a>
 			</p>
 	</div>
 		
