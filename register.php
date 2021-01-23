@@ -30,6 +30,9 @@ if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
 if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
 	exit('Password must be between 5 and 20 characters long!');
 }
+if ($_POST['password'] != $_POST['confirm_password']){
+	exit('Both passwords (password and confirmed password) must be the same!');
+}
 
 // We need to check if the account with that username exists.
 if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?')) {
