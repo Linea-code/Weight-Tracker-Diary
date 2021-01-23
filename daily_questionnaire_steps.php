@@ -201,7 +201,7 @@ $thisday = $_GET['date'];
     </div>
     <h1>How long did you sleep last night?</h1>
     <div class="slidecontainer">
-        <span class="slider">
+        <span class="slidecontainer">
             <input name= "sleep_time" type="range" min="0" max="20" value="8" class="slider" id="myRange">
             <p>Duration: <span id="demo"></span> hours</p>
         </span>

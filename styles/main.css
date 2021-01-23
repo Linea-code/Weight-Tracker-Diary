@@ -145,7 +145,7 @@ body {
     color: #ffffff;
     border-radius: 25px;
 }
-.login form input[type="password"], .login form input[type="text"] {
+form input[type="password"], form input[type="text"], form input[type="number"] {
     width: 310px;
     height: 50px;
     border: 1px solid #dee0e4;
@@ -412,7 +412,20 @@ div.delete{
     
   }
   
-  .days div {
+  .date {
+    font-size: 0.9rem;
+    width: calc(100% / 7);
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s;
+    text-decoration: none;
+    color: black;
+  }
+
+/*   .days div, .days a {
     font-size: 0.9rem;
     width: calc(100% / 7);
     height: 3rem;
@@ -421,14 +434,14 @@ div.delete{
     align-items: center;
     text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
     transition: background-color 0.2s;    
-  }
+  } */
 
-  .days div a{
+ /*  .days div a{
     text-decoration: none;
     color: black;
-  }
+  } */
   
-  .days div:hover:not(.today) {
+  .date:hover:not(.today) {
     border: 0.2rem solid #777;
     cursor: pointer;
   }
@@ -456,11 +469,7 @@ div.delete{
     border: 0.2rem solid #777;
   }
 
-  .today:hover{
-    border: 0.2rem solid #777;
-  }
-
- a.fill-calendarday{
+/*  a.fill-calendarday{
      text-align: center;
      text-decoration: none;
      font-size: 0.9rem;
@@ -474,19 +483,21 @@ div.delete{
      text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
      transition: background-color 0.2s;
      color: black;
- }
+ } */
 
 /* Questionnaire*/
 .quest {
   background-color: #f1f1f1;
 }
 #regForm {
-  background-color: #ffffff;
   margin: 150px auto;
   font-family: Raleway;
   padding: 40px;
-  width: 70%;
+  max-width: 800px;
   min-width: 300px;
+  background-color: #DFF4F3;
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 25px 25px;
 }
 
 .quest h1 {
@@ -513,14 +524,15 @@ div.delete{
 }
 
 .quest button {
-  background-color: #4CAF50;
+  background-color: #377AAF;
   color: #ffffff;
   border: none;
-  padding: 10px 20px;
+  padding: 15px 25px;
   font-size: large;
   font-family: Raleway;
   cursor: pointer;
   margin-top: 30px;
+  border-radius: 25px;
 }
 
 .quest button:hover {
@@ -549,7 +561,7 @@ div.delete{
 
 /* Mark the steps that are finished and valid: */
 .quest .step.finish {
-  background-color: #4CAF50;
+  background-color: #377AAF;
 }
 .quest .stepper_button{
     font-size: 50px;
@@ -569,6 +581,40 @@ div.delete{
 }
 .quest .slider{
     width: 100%;
+    -webkit-appearance: none;
+  height: 15px;
+  border-radius: 25px;
+  background: #3BBBB3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slidecontainer {
+  width: 100%;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #377AAF;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #377AAF;
+  cursor: pointer;
 }
 
 .quest .hidden{
@@ -580,19 +626,22 @@ div.delete{
 }
 
 .quest input:checked + label {
-    padding: 5px;
-    background-color: #4CAF50;
+    padding: 10px;
+    background-color: #3BBBB3;
     border-style:initial;
-    border-width: 5px;
-    border-color: #4CAF50;
-    border-radius: 20px;
+    border-radius: 25px;
 }
 
  /* ########chart and Statistics####### */
 
+.statistics_container {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
 .overall_stat{
   display: flex;
-  height: 100vh;
+  min-height: 60vh;
 }
 
 .statistic_header{

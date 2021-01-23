@@ -164,22 +164,21 @@ $today = new DateTime();
 				<div class="navlinks"><a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a></div>
 			</div>
 		</nav>	
-		<h1 class="statistic_header">Your overall Statistic</h1>	
-		<div class="overall_stat"> 
-			<div id="donut" class= "donut_chart"> </div>
-			<div id="chart" class= "line_chart"></div>
-		</div>
-		
-		<h1 class="statistic_header">Your last week</h1>
-		<div class="last_week_stat"> 
-			<div id="num_of_entries" class="donut_small"> </div>
-			<div id="avg_sleep" class="donut_small"> </div>
-			<div id="sports" class="donut_small"> </div>
-			<div id="sports_kind" class="donut_small"> </div>
-		</div>
-		
-
-	
+		<section class="statistics_container">
+			<h1 class="statistic_header">Your overall Statistic</h1>	
+			<div class="overall_stat"> 
+				<div id="donut" class= "donut_chart"> </div>
+				<div id="chart" class= "line_chart"></div>
+			</div>
+			
+			<h1 class="statistic_header">Your last week</h1>
+			<div class="last_week_stat"> 
+				<div id="num_of_entries" class="donut_small"> </div>
+				<div id="avg_sleep" class="donut_small"> </div>
+				<div id="sports" class="donut_small"> </div>
+				<div id="sports_kind" class="donut_small"> </div>
+			</div>
+		</section>
 	<script> 
 		
 		Morris.Area({

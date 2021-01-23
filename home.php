@@ -92,7 +92,7 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 						>
 							<i class="fas fa-angle-left"></i>
 						</a>
-					<div class="date">
+					<div>
 						<h1><?php 
 						$months = [
 							"January",
@@ -140,12 +140,12 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 
 						for($i = (int) $date->format('w') ; $i > 0; $i--){
 						
-							echo '<div class="prev-date">'.((int) $prevLastDay->format('d') - $i +1).'</div>';
+							echo '<div class="date prev-date">'.((int) $prevLastDay->format('d') - $i +1).'</div>';
 						}
 
 						for($i =1; $i <= (int) $date->format('t'); $i++) {
 							if(($i == (int) $today->format('d')) and ((int) $date->format('m')) == ((int) $today->format('m'))) {
-								echo '<div class="today"> <a href="daily_questionnaire_steps.php?date='.$thisday_formatted.'" class="fill-calendarday">'.$i.'</a></div>';
+								echo '<a href="daily_questionnaire_steps.php?date='.$thisday_formatted.'" class="date today"><div> '.$i.'</div></a>';
 							} else {
 								$stmt = $con->prepare ("SELECT score FROM diary_entries WHERE user_id = ? AND date = ?");
 								$thisday = clone $date;
@@ -165,13 +165,13 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 								}
 								
 								if($color){
-									echo '<div class="'.$color.'"><a href="visit_entry.php?date='.$thisday_formatted.'">'.$i.'</a></div>';
+									echo '<a href="visit_entry.php?date='.$thisday_formatted.'" class="'.$color.' date"><div>'.$i.'</div></a>';
 								}
 								elseif($today >= $thisday){ 
-									echo '<div><a href="daily_questionnaire_steps.php?date='.$thisday_formatted.'" class="fill-calendarday">'.$i.'</a></div>';
+									echo '<a href="daily_questionnaire_steps.php?date='.$thisday_formatted.'" class="date"><div>'.$i.'</div></a>';
 								}
 								else{
-									echo '<div><a>'.$i.'</a></div> ';
+									echo '<a class="date"><div>'.$i.'</div></a> ';
 								}
 							}
 						}
@@ -179,7 +179,7 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 						$lastDay = new DateTime($date->format('Y-m-t'));
 
 						for($i= 1; $i <= (6 - (int) $lastDay->format('w')); $i++){
-							echo '<div class="next-date">'.$i.'</div>';
+							echo '<div class="date next-date">'.$i.'</div>';
 						}
 						?>
 					</div>
