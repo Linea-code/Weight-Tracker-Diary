@@ -836,6 +836,7 @@ div.delete{
 
   .overall_stat{
     flex-direction: column;
+    min-height: 100vh;
   }
 
   .last_week_stat{
