@@ -64,9 +64,9 @@ $score = $_POST['feeling'] + ($_POST['sports'] * 2) + (($_POST['sleep'] + $sleep
 
 $stmt->execute();
 
-if($score >= 7.5){$day_attribute="Seems like today was a very good day! Congratulations! Keep going like this. Todays score is amazing and you had ".$sleep_time." hours of sleep tonight.";}
-elseif($score>= 5){$day_attribute ="Seems like today was a good day! Nice! Keep going and stay motivated. Todays score is good and you had ".$sleep_time." hours of sleep tonight.";}
-elseif($score >= 2.5){$day_attribute="Seems like today was not the best day in your life... but never give up and stay motivated. Tomorrow is a new chance: use it! Maybe you could also improve your ".$sleep_time." hours of sleep tonight.";}
+if($score > 7.5){$day_attribute="Seems like today was a very good day! Congratulations! Keep going like this. Todays score is amazing and you had ".$sleep_time." hours of sleep tonight.";}
+elseif($score> 5){$day_attribute ="Seems like today was a good day! Nice! Keep going and stay motivated. Todays score is good and you had ".$sleep_time." hours of sleep tonight.";}
+elseif($score > 2.5){$day_attribute="Seems like today was not the best day in your life... but never give up and stay motivated. Tomorrow is a new chance: use it! Maybe you could also improve your ".$sleep_time." hours of sleep tonight.";}
 elseif($score > 0){$day_attribute="Seems like today was horrible... but never give up, stay motivated and think of your goals. Tomorrow is a new chance: use it to improve yourself! Maybe there are also more than ".$sleep_time." hours of sleep weiting for you this night.";}
 
 

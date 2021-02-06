@@ -29,8 +29,6 @@ $stmt->bind_param("i", $_SESSION['id']);
 $stmt->execute();
 $result = $stmt->get_result();
 
-/* $query = "SELECT date, weight FROM diary_entries WHERE user_id = 16";
-$result = mysqli_query($con, $query); */
 $chart_data = '';
 
 while($row = mysqli_fetch_array($result))
@@ -158,9 +156,9 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 
 								while($row = mysqli_fetch_array($color_array))
 								{
-								if($row['score'] >= 7.5){$color = 'darkgreen';}
-								elseif($row['score'] >= 5){$color = 'green';}
-								elseif($row['score'] >= 2.5){$color = 'orange';}
+								if($row['score'] > 7.5){$color = 'darkgreen';}
+								elseif($row['score'] > 5){$color = 'green';}
+								elseif($row['score'] > 2.5){$color = 'orange';}
 								elseif($row['score'] > 0){$color = 'red';}
 								}
 								
