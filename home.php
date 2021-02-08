@@ -143,7 +143,7 @@ if (isset($_GET['date']) && DateTime::createFromFormat('Y-m',$_GET['date'])){
 
 						for($i =1; $i <= (int) $date->format('t'); $i++) {
 							if(($i == (int) $today->format('d')) and ((int) $date->format('m')) == ((int) $today->format('m'))) {
-								echo '<a href="daily_questionnaire_steps.php?date='.$thisday_formatted.'" class="date today"><div> '.$i.'</div></a>';
+								echo '<a href="daily_questionnaire_steps.php?date='.$today->format('Y-m-d').'" class="date today"><div> '.$i.'</div></a>';
 							} else {
 								$stmt = $con->prepare ("SELECT score FROM diary_entries WHERE user_id = ? AND date = ?");
 								$thisday = clone $date;
