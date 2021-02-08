@@ -98,7 +98,7 @@ while($row = mysqli_fetch_array($result3))
 }
 
 if ($count_sleep_data > 1){
-	$avg_sleep_time = $avg_sleep_time/$count_sleep_data;
+	$avg_sleep_time = round($avg_sleep_time/$count_sleep_data, 2);
 }
 
 $avg_sleep_data .="{ label:'Average Sleep Time', value:".$avg_sleep_time."}, ";
