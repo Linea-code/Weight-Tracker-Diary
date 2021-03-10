@@ -68,10 +68,10 @@
         INSERT INTO rating(id, rating) VALUES(4, 'good')
         ```
         ```SQL
-        INSERT INTO rating(id, sports_kind) VALUES(1, 'biking')
-        INSERT INTO rating(id, sports_kind) VALUES(2, 'swimming')
-        INSERT INTO rating(id, sports_kind) VALUES(3, 'lifting weights')
-        INSERT INTO rating(id, sports_kind) VALUES(4, 'running')
+        INSERT INTO sports(id, sports_kind) VALUES(1, 'biking')
+        INSERT INTO sports(id, sports_kind) VALUES(2, 'swimming')
+        INSERT INTO sports(id, sports_kind) VALUES(3, 'lifting weights')
+        INSERT INTO sports(id, sports_kind) VALUES(4, 'running')
         ```
     
 
