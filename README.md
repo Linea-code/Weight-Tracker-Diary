@@ -61,7 +61,18 @@
          PRIMARY KEY (`id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
         ``` 
-
+        ```SQL
+        INSERT INTO rating(id, rating) VALUES(1, 'bad')
+        INSERT INTO rating(id, rating) VALUES(2, 'moderate')
+        INSERT INTO rating(id, rating) VALUES(3, 'okay')
+        INSERT INTO rating(id, rating) VALUES(4, 'good')
+        ```
+        ```SQL
+        INSERT INTO rating(id, sports_kind) VALUES(1, 'biking')
+        INSERT INTO rating(id, sports_kind) VALUES(2, 'swimming')
+        INSERT INTO rating(id, sports_kind) VALUES(3, 'lifting weights')
+        INSERT INTO rating(id, sports_kind) VALUES(4, 'running')
+        ```
     
 
 
