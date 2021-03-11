@@ -3,141 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <link href="styles/main.css" rel="stylesheet" type="text/css">
-<!-- <style>
-* {
-  box-sizing: border-box;
-}
 
-body {
-  background-color: #f1f1f1;
-}
-
-#regForm {
-  background-color: #ffffff;
-  margin: 100px auto;
-  font-family: Raleway;
-  padding: 40px;
-  width: 70%;
-  min-width: 300px;
-}
-
-h1 {
-  text-align: center;  
-}
-
-input {
-  padding: 10px;
-  width: auto;
-  font-size: 17px;
-  font-family: Raleway;
-  border: 1px solid #aaaaaa;
-}
-
-/* Mark input boxes that gets an error on validation: */
-input.invalid {
-  background-color: #ffdddd;
-}
-
-/* Hide all steps by default: */
-.tab {
-  display: none;
-}
-
-button {
-  background-color: #4CAF50;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 17px;
-  font-family: Raleway;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: 0.5;
-}
-
-#prevBtn {
-  background-color: #bbbbbb;
-}
-
-/* Make circles that indicate the steps of the form: */
-.step {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbbbbb;
-  border: none;  
-  border-radius: 50%;
-  display: inline-block;
-  opacity: 0.5;
-}
-
-.step.active {
-  opacity: 1;
-}
-
-/* Mark the steps that are finished and valid: */
-.step.finish {
-  background-color: #4CAF50;
-}
-.stepper_button{
-    font-size: 50px;
-    background-color:white;
-    width: auto;
-    border: none;
-}
-
-.form-radio{
-    text-align: center;
-    font-size: xx-large;
-}
-
-.radio-item{
-    align-items: center;
-}
-.slider{
-    width: 100%;
-}
-
-.hidden{
-    visibility: hidden;
-}
-
-input:checked + label {
-    padding: 5px;
-    background-color: #4CAF50;
-    border-style:initial;
-    border-width: 5px;
-    border-color: #4CAF50;
-    border-radius: 20px;
-}
-
-.footer {
-  color: gray;
-  font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
-  font-size: 12px;
-  background-color: #DFF4F3;
-  width: 100%;
-  bottom: 0;
-  right: 0;
-  height: 20px;
-  position:absolute;
-}
-
-.footer p{
-  display: inline;
-  float: right;
-  margin:0%
-}
-.footer a:link{
-  text-decoration: none;
-  color: gray;
-  margin-left: 15px;
-  }
-
-
-</style> -->
 <body class="quest">
   <div class="header">
     <div class="ellipses">
@@ -148,10 +14,11 @@ input:checked + label {
     <div class="ellipse12"></div>
   </div>
 <?php 
-
+# set the date by using the provided date from the URL
 $thisday = $_GET['date'];
 ?>
 
+<!-- Form with all questions by using JavaScript to enable a stepper view-->
 <form id="regForm" action=<?php echo "daily_questionnaire.php?date=$thisday"?> method="post">
   <!-- One "tab" for each step in the form: -->
   <div class="tab">
@@ -282,7 +149,7 @@ $thisday = $_GET['date'];
 
 <script>
 var currentTab = 0; // Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the current tab
+showTab(currentTab); // Show the current tab
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
 output.innerHTML = slider.value;
@@ -290,12 +157,12 @@ output.innerHTML = slider.value;
 slider.oninput = function() {
   output.innerHTML = this.value;
 }
-function showTab(n) {
 
-  // This function will display the specified tab of the form...
+// showTab function enables to show each time the actual step
+function showTab(n) {
   var x = document.getElementsByClassName("tab");
   x[n].style.display = "block";
-  //... and fix the Previous/Next buttons:
+  //Previous button is ony available from the second step onwards and Next button gets submit on the last step
   if (n == 0) {
     document.getElementById("prevBtn").style.display = "none";
   } else {
@@ -311,7 +178,7 @@ function showTab(n) {
 }
 
 function nextPrev(n) {
-  // This function will figure out which tab to display
+  // Fuction is used to declare which step should be showen
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
   if (n == 1 && !validateForm()) return false;
@@ -319,9 +186,8 @@ function nextPrev(n) {
   x[currentTab].style.display = "none";
   // Increase or decrease the current tab by 1:
   currentTab = currentTab + n;
-  // if you have reached the end of the form...
+  // submitt form after reaching the last step:
   if (currentTab >= x.length) {
-    // ... the form gets submitted:
     document.getElementById("regForm").submit();
     return false;
   }
@@ -330,11 +196,11 @@ function nextPrev(n) {
 }
 
 function validateForm() {
-  // This function deals with validation of the form fields
+  // validation of the form fields:
   var x, y, i;
   x = document.getElementsByClassName("tab");
   y = x[currentTab].getElementsByTagName("input");
-  // A loop that checks every input field in the current tab:
+  // check every input field in the current tab -> if required an answer needs to be selected prior moring on
   let currentName;
   let valid = true;
   for (i = 0; i < y.length; i++) {
@@ -369,17 +235,18 @@ function validateForm() {
 }
 
 function fixStepIndicator(n) {
-  // This function removes the "active" class of all steps...
+  // remove the "active" class of all steps
   var i, x = document.getElementsByClassName("step");
   for (i = 0; i < x.length; i++) {
     x[i].className = x[i].className.replace(" active", "");
   }
-  //... and adds the "active" class on the current step:
+  //add the "active" class on the current step:
   x[n].className += " active";
 }
 
 </script>
 
+<!--Footer-->
   <div class="footer">
     <p> &copy; Copyright 2021 | Linea Schmidt, Simon Shabo
       <a href="About_this_website.html"> About this website</a>

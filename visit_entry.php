@@ -1,29 +1,23 @@
 <?php
-// We need to use sessions, so you should always start sessions using the below code.
 session_start();
-/* // If the user is not registered do not open homepage
-if ($account['activation_code'] == 'activated') {
-	header('Location: index.html');
-	exit;
-}else{
-    header('Location: not_registered.html');
-	exit;
-} */
-// If the user is not logged in redirect to the login page...
+// If the user is not logged in redirect to the login page
 if (!isset($_SESSION['loggedin'])) {
 	header('Location: login.html');
 	exit;
 }
 
+//database connection
 $DATABASE_HOST = 'localhost';
 $DATABASE_USER = 'root';
 $DATABASE_PASS = '';
 $DATABASE_NAME = 'weight-tracker-diary';
 $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+//error message if no connection is possible
 if (mysqli_connect_errno()) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 
+//request entry from the clicked day (passed on via URL)
 $day_attribute= '';
 $stmt = $con->prepare("SELECT * FROM diary_entries WHERE user_id = ? AND date = ?");
 $thisdate = DateTime::createFromFormat('Y-m-d', $_GET['date'])->format('Y-m-d');
@@ -31,7 +25,7 @@ $stmt->bind_param("is", $_SESSION['id'], $thisdate );
 $stmt->execute();
 $result = $stmt->get_result();
 
-
+//prepare the information to be displayed properly 
 while($row = mysqli_fetch_array($result))
 {
     $weight= $row['weight'];
@@ -71,6 +65,7 @@ while($row = mysqli_fetch_array($result))
 
 }
 
+// individual message based on the information in the entry  -> text with gabs filled with the right word
 $message = 'It was a '.$feeling.' day. In the neight you had '.$hours_sleep.' hours of '.$sleep_attribute.' sleep. You '.$sports.' sports'.$sportskind.'.';
 
 

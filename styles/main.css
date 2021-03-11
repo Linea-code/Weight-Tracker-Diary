@@ -6,10 +6,8 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* .header *{
-  z-index: -1;
-  
-} */
+/* General Header with bubbles (ellipses) */
+
 .header {
   position: absolute;
   top: 0; bottom: 0;
@@ -38,21 +36,21 @@
 }
 .header .ellipses .ellipse10{
   /* Ellipse 10 */
-position: absolute;
-width: 84px;
-height: 84px;
-top: 20px;
-left: 40px;
-background: #3BBBB3;
-border-radius: 50%;
+  position: absolute;
+  width: 84px;
+  height: 84px;
+  top: 20px;
+  left: 40px;
+  background: #3BBBB3;
+  border-radius: 50%;
 }
 .header .ellipses .ellipse11{
 /* Ellipse 11 */
-position: absolute;
-width: 64.5px;
-height: 64.5px;
-background: #377AAF;
-border-radius: 50%;
+  position: absolute;
+  width: 64.5px;
+  height: 64.5px;
+  background: #377AAF;
+  border-radius: 50%;
 }
 .header .ellipse12{
   /* Ellipse 12 */
@@ -62,15 +60,16 @@ border-radius: 50%;
   left: 0;
   top:-50px;
   left: -50px;
-  /*right: -43px;*/
   background: #3BBBB3; 
   border-radius: 50%;
 }
 
+/* general Body */
 body {
     background-color: #ffffff;
 }
 
+/*Footer*/
 .footer {
   color: gray;
   font-size: 12px;
@@ -100,8 +99,7 @@ body {
   margin-left: 50px;
   }
 
-
-
+/*About us page*/
 .About h1{
   text-align: center;
 }
@@ -110,6 +108,7 @@ body {
   text-justify: newspaper;
 }
 
+/*Login page*/
 .login {
     width: 400px;
     background-color: #DFF4F3;
@@ -167,6 +166,8 @@ form input[type="password"], form input[type="text"], form input[type="number"] 
   background-color: #2868c7;
     transition: background-color 0.2s;
 }
+
+/*Navbar*/
 .navtop {
   margin-top: 40px;
   padding-left: 30%;
@@ -198,6 +199,7 @@ form input[type="password"], form input[type="text"], form input[type="number"] 
 	color: #3BBBB3;
 }
 
+/* general page definitions*/
 body.loggedin {
 	background-color: #f3f4f7;
 }
@@ -243,6 +245,7 @@ h2 {
   padding: 50px 0;
 }
 
+/* delete account button*/
 .delete_account {
   margin-bottom: 50px;
 }
@@ -261,6 +264,7 @@ div.delete{
   border-radius: 25px;
 }
 
+/* Registration */
 .register {
     width: 400px;
     background-color: #DFF4F3;
@@ -422,22 +426,6 @@ div.delete{
     text-decoration: none;
     color: black;
   }
-
-/*   .days div, .days a {
-    font-size: 0.9rem;
-    width: calc(100% / 7);
-    height: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
-    transition: background-color 0.2s;    
-  } */
-
- /*  .days div a{
-    text-decoration: none;
-    color: black;
-  } */
   
   .date:hover:not(.today) {
     border: 0.2rem solid #777;
@@ -466,22 +454,6 @@ div.delete{
     background-color: #3BBBB3;
     border: 0.2rem solid #777;
   }
-
-/*  a.fill-calendarday{
-     text-align: center;
-     text-decoration: none;
-     font-size: 0.9rem;
-     font-size: 0.9rem;
-     margin: 0.3rem;
-     width: calc(100% / 7);
-     height: 3rem;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
-     transition: background-color 0.2s;
-     color: black;
- } */
 
 /* Questionnaire*/
 .quest {
@@ -716,6 +688,8 @@ div.delete{
   margin-left: 10px;
 }
 
+
+/* Adjustments to different screen sizes*/
 @media only screen and (max-width: 950px){
    
   .navtop {
